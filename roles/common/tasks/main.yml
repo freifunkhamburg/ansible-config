@@ -6,3 +6,4 @@
 - include: nano.yml
 - include: python.yml
 - include: mosh.yml
+- include: aptitude.yml
