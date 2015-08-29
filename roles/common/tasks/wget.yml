@@ -1,0 +1,4 @@
+---
+- name: install wget
+  apt: name=wget state=latest
+  tags: wget

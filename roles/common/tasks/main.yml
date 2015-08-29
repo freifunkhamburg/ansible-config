@@ -1,0 +1,8 @@
+---
+- include: wget.yml
+- include: curl.yml
+- include: zsh.yml
+- include: git.yml
+- include: nano.yml
+- include: python.yml
+- include: mosh.yml
