@@ -1,0 +1,37 @@
+# /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help
+
+driftfile /var/lib/ntp/ntp.drift
+
+logfile /var/log/ntpstats/ntp.log
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+
+server 127.127.1.0
+fudge  127.127.1.0 stratum 10
+
+server ptbtime1.ptb.de
+server ptbtime2.ptb.de
+server ptbtime3.ptb.de
+
+# Restrict all incoming connection
+restrict -4 default ignore
+restrict -6 default ignore
+
+restrict 192.53.103.108 nomodify notrap nopeer noquery
+restrict 192.53.103.104 nomodify notrap nopeer noquery
+restrict 192.53.103.103 nomodify notrap nopeer noquery
+ 
+# Local users may interrogate the ntp server more closely.
+restrict 127.0.0.1
+restrict -6 ::1
+ 
+# Disable the monlist request as this is associated with ntp
+# amplification attacks
+disable monitor
+ 
+restrict {{ prefix4 }} mask {{ netmask4 }} nomodify notrap nopeer
+restrict {{ prefix6 }} mask {{ netmask6 }} nomodify notrap nopeer
+
