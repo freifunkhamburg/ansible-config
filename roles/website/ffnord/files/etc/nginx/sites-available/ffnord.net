@@ -1,0 +1,13 @@
+server {
+    include /etc/nginx/include/no_logging.conf;
+    include /etc/nginx/include/no_dotfiles.conf;
+    include /etc/nginx/include/no_symlinks.conf;
+
+    listen 80;
+    listen [::]:80;
+
+    server_name ffnord.net www.ffnord.net nord.freifunk.net;
+
+    root /var/www/ffnord.net/site;
+}
+

@@ -1,0 +1,36 @@
+---
+- name: be sure nginx is installed
+  apt: name=nginx state=latest
+  tags: nginx
+
+- name: copy includes
+  copy: >
+    src=etc/nginx/include
+    dest=/etc/nginx
+    mode=0644
+    owner=root
+    group=root
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: remove default site
+  file: path={{ item }} state=absent
+  with_items:
+    - /etc/nginx/sites-available/default
+    - /etc/nginx/sites-enabled/default
+    - /var/www/html
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: configure nginx
+  copy: >
+    src=etc/nginx/nginx.conf
+    dest=/etc/nginx/nginx.conf
+    mode=0644
+    owner=root
+    group=root
+  notify:
+    - restart nginx
+  tags: nginx

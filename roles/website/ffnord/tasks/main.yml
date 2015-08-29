@@ -1,0 +1,26 @@
+---
+- name: configure ffnord.net site
+  copy: >
+    src=etc/nginx/sites-available/ffnord.net
+    dest=/etc/nginx/sites-available/ffnord.net
+    owner=root
+    group=root
+    mode=0644
+  notify: reload ffnord
+  tags: nginx
+
+- name: enable ffnord.net site
+  file: >
+    src=/etc/nginx/sites-available/ffnord.net
+    dest=/etc/nginx/sites-enabled/ffnord.net
+    owner=root
+    group=root
+    mode=0644
+    state=link
+  notify: reload ffnord
+  tags: nginx
+
+- name: clone ffnord.net repository
+  git: repo=https://github.com/ffnord/ffnord.net.git dest=/var/www/ffnord.net
+  tags: nginx
+

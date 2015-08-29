@@ -2,4 +2,5 @@
 - hosts: services
   roles:
     - ntp-server
+    - website/ffnord
 
