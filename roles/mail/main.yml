@@ -1,0 +1,4 @@
+---
+- include: postfix.yml
+- include: dovecot.yml
+- include: mailman.yml

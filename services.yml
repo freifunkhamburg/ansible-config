@@ -2,4 +2,4 @@
 - hosts: services
   roles:
     - ntp-server
-
+    - mail
