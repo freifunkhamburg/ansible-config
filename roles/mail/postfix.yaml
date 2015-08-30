@@ -1,4 +1,6 @@
 ---
 - name: install postfix
   apt: name=postfix state=latest
-  tags: postfix
+  tags: 
+    - postfix
+    - mail
