@@ -1,0 +1,7 @@
+---
+  - name: install postgres
+    apt: name=postgresql state=latest
+    tags: 
+      - postgres
+      - postgresql
+      - database
