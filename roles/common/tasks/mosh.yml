@@ -1,4 +1,0 @@
----
-- name: install mosh
-  apt: name=mosh state=latest
-  tags: mosh

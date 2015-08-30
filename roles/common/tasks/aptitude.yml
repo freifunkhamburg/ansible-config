@@ -1,4 +1,0 @@
----
-- name: install aptitude
-  apt: name=aptitude state=latest
-  tags: aptitude

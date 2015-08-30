@@ -1,4 +1,0 @@
----
-- name: install nano
-  apt: name=nano state=latest
-  tags: nano

@@ -1,9 +1,12 @@
 ---
-- include: wget.yml
-- include: curl.yml
-- include: zsh.yml
-- include: git.yml
-- include: nano.yml
-- include: python.yml
-- include: mosh.yml
-- include: aptitude.yml
+- name: install common packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - aptitude
+    - curl
+    - git
+    - mosh
+    - nano
+    - python
+    - wget
+    - zsh

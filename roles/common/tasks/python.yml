@@ -1,4 +1,0 @@
----
-- name: install python
-  apt: name=python state=latest
-  tags: python
