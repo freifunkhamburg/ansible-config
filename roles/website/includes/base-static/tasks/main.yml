@@ -12,6 +12,14 @@
     - website
     - "{{ site }}"
 
+- name: create {{ site }} root
+  file: path={{ document_root.path }} state=directory owner=www-data group=www-data mode=0755
+  when: document_root.create
+  tags:
+    - nginx
+    - website
+    - "{{ site }}"
+
 - name: enable {{ site }} site
   file: >
     src=/etc/nginx/sites-available/{{ site }}

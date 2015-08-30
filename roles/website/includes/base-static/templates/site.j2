@@ -1,3 +1,4 @@
+{% for port in ports %}
 server {
     include /etc/nginx/include/no_logging.conf;
     include /etc/nginx/include/no_dotfiles.conf;
@@ -7,11 +8,12 @@ server {
         include /etc/nginx/include/listing.conf;
     {% endif %}
 
-    listen 80;
-    listen [::]:80;
+    listen {{port.number}}{% if port.ssl %} ssl{% endif %};
+    listen [::]:{{port.number}}{% if port.ssl %} ssl{% endif %};
 
     server_name {{ domains | join(" ") }};
 
-    root {{ document_root }};
+    root {{ document_root.path }};
 }
 
+{% endfor %}

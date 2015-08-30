@@ -1,16 +1,18 @@
 ---
 - include: ../../includes/base-static/tasks/main.yml
   vars:
-    site: ffnord.net
+    site: ffnord_site
     domains:
       - ffnord.net
       - www.ffnord.net
       - nord.freifunk.net
-    document_root: /var/www/ffnord.net/site
+    ports:
+      - { number: 80, ssl: false }
+    document_root: { path: /var/www/ffnord/site/site, create: false }
     listing: false
 
 - name: clone ffnord.net repository
-  git: repo=https://github.com/ffnord/ffnord.net.git dest=/var/www/ffnord.net
+  git: repo=https://github.com/ffnord/ffnord.net.git dest=/var/www/ffnord/site
   tags:
     - nginx
     - website
