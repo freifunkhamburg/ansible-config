@@ -2,15 +2,18 @@
 
 ## Vorraussetzungen
 
-### Ansible
-
 Ansible wird nicht auf den Hosts installiert, sondern muss auf dem jeweiligen
 Rechner, von dem aus die Hosts verwaltet werden sollen installiert werden.
 
-####python netaddr lib
-Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
+Ansible kann zusammen mit den benötigten Abhängigkeiten wie folgt installiert
+werden:
 
-    pip install netaddr
+    pip install -r requirements.txt
+
+Unter NixOS kann alternativ über die default.nix eine nix-shell erzeugt werden:
+
+    nix-shell
+
 ### SSH
 
 Zur Konfiguration wird auf den Hosts jeweils ein Nutzer mit sudo-Rechten
