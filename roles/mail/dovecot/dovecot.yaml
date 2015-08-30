@@ -4,3 +4,19 @@
   tags: 
     - dovecot
     - mail
+- name: install dovecot-lmtpd
+  apt: name=dovecot-lmtpd state=latest
+  tags: 
+    - dovecot
+    - mail
+    - database
+    - postgres
+    - postgresql
+- name: install dovecot-pgsql
+  apt: name=dovecot-pgsql state=latest
+  tags: 
+    - dovecot
+    - mail
+    - database
+    - postgres
+    - postgresql

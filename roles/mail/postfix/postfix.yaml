@@ -4,3 +4,10 @@
   tags: 
     - postfix
     - mail
+- name: install postfix-pgsql
+  apt: name=postfix state=latest
+  tags: 
+    - postfix
+    - mail
+    - postgres
+    - databases
