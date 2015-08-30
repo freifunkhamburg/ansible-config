@@ -6,8 +6,11 @@
     owner=root
     group=root
     mode=0644
-  notify: reload ffnord
-  tags: nginx
+  notify: reload nginx config
+  tags:
+    - nginx
+    - website
+    - ffnord
 
 - name: enable ffnord.net site
   file: >
@@ -17,10 +20,16 @@
     group=root
     mode=0644
     state=link
-  notify: reload ffnord
-  tags: nginx
+  notify: reload nginx config
+  tags:
+    - nginx
+    - website
+    - ffnord
 
 - name: clone ffnord.net repository
   git: repo=https://github.com/ffnord/ffnord.net.git dest=/var/www/ffnord.net
-  tags: nginx
+  tags:
+    - nginx
+    - website
+    - ffnord
 

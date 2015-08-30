@@ -1,3 +1,0 @@
----
-- name: reload ffnord
-  service: name=nginx state=reloaded
