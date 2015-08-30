@@ -31,7 +31,6 @@ restrict -6 ::1
 # Disable the monlist request as this is associated with ntp
 # amplification attacks
 disable monitor
- 
-restrict {{ prefix4 }} mask {{ netmask4 }} nomodify notrap nopeer
-restrict {{ prefix6 }} mask {{ netmask6 }} nomodify notrap nopeer
+restrict {{ prefix4.split("/")[0] }} mask {{ prefix4 | ipaddr('netmask') }} nomodify notrap nopeer
+restrict {{ prefix6.split("/")[0] }} mask {{ prefix6 | ipaddr('netmask') }} nomodify notrap nopeer
 
