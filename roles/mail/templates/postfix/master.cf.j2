@@ -1,0 +1,3 @@
+# Dovecot LDA
+dovecot   unix  -       n       n       -       -       pipe
+  flags=DRhu user=vmail:mail argv=/usr/libexec/dovecot/deliver -d ${recipient}

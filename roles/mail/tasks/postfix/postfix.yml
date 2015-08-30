@@ -11,3 +11,15 @@
     - mail
     - postgres
     - databases
+- name: template postfix main.cf
+  template: src=postfix/main.cf.j2 dest=/etc/postfix/main.cf
+  tags: 
+    - postfix
+    - mail
+    - config
+- name: template postfix master.cf
+  template: src=postfix/master.cf.j2 dest=/etc/postfix/master.cf
+  tags:   
+    - postfix
+    - mail
+    - config
