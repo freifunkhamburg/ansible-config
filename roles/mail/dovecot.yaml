@@ -1,4 +1,6 @@
 ---
 - name: install dovecot
   apt: name=dovecot state=latest
-  tags: dovecot
+  tags: 
+    - dovecot
+    - mail
