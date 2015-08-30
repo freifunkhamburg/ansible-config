@@ -4,3 +4,6 @@ netmask4: 255.255.192.0
 
 prefix6: 2a03:2267:0000:0000:0000:0000:0000:0000
 netmask6: ffff:ffff:ffff:ffff:0000:0000:0000:0000
+
+db_mail_name: mail
+db_mail_password: <set_password_here>
