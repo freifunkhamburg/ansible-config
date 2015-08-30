@@ -1,0 +1,6 @@
+# Used for QUOTA!
+user = postfixdbuser
+password = {{ db_mail_password }}
+hosts = localhost
+dbname = {{ db_mail_name }}
+query = SELECT quota FROM mailbox WHERE username='%s'

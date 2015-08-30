@@ -1,0 +1,5 @@
+user = postfixdbuser
+password = {{ db_mail_password }}
+hosts = localhost
+dbname = {{ db_mail_name }}
+query = SELECT maildir FROM mailbox WHERE username='%s' AND active = true
