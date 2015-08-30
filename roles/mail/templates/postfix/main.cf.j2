@@ -1,0 +1,31 @@
+myorigin                                = /etc/mailname
+myhostname                              = srv01.hamburg.freifunk.net
+mydestination                           = srv01, localhost.localdomain, localhost
+mynetworks                              = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 2.240.221.24/32 2.240.27.24/32
+
+smtp_bind_address                       = {{ ansible_eth0["ipv4"]["address"] }}
+smtp_bind_address6                      = {{ ansible_eth0["ipv6"]["address"] }}
+
+relay_domains                           = proxy:pgsql:/etc/postfix/pgsql/relay_domains.cf
+virtual_alias_maps                      = proxy:pgsql:/etc/postfix/pgsql/virtual_alias_maps.cf
+virtual_mailbox_domains                 = proxy:pgsql:/etc/postfix/pgsql/virtual_domain_maps.cf
+virtual_mailbox_maps                    = proxy:pgsql:/etc/postfix/pgsql/virtual_mailbox_maps.cf
+virtual_mailbox_base                    = /home/vmail
+virtual_mailbox_limit                   = 512000000
+virtual_minimum_uid                     = 500
+virtual_transport                       = virtual
+virtual_uid_maps                        = static:500
+virtual_gid_maps                        = static:500
+local_transport                         = virtual
+local_recipient_maps                    = $virtual_mailbox_maps
+
+smtp_tls_cert_file                      = /etc/ssl/certs/hamburg.freifunk.net.crt
+smtp_tls_key_file                       = /etc/ssl/private/hamburg.freifunk.net.key
+
+smtpd_tls_cert_file                     = /etc/ssl/certs/hamburg.freifunk.net.crt
+smtpd_tls_key_file                      = /etc/ssl/private/hamburg.freifunk.net.key
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+broken_sasl_auth_clients = yes
