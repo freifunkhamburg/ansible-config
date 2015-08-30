@@ -1,4 +1,0 @@
----
-handlers: 
-  - include: ../../nginx/handlers/main.yml
-

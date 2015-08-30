@@ -1,0 +1,28 @@
+---
+- name: configure {{ site }} site
+  template: >
+    src=site.j2
+    dest=/etc/nginx/sites-available/{{ site }}
+    owner=root
+    group=root
+    mode=0644
+  notify: reload nginx config
+  tags:
+    - nginx
+    - website
+    - "{{ site }}"
+
+- name: enable {{ site }} site
+  file: >
+    src=/etc/nginx/sites-available/{{ site }}
+    dest=/etc/nginx/sites-enabled/{{ site }}
+    owner=root
+    group=root
+    mode=0644
+    state=link
+  notify: reload nginx config
+  tags:
+    - nginx
+    - website
+    - "{{ site }}"
+

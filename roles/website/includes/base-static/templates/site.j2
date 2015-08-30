@@ -3,11 +3,15 @@ server {
     include /etc/nginx/include/no_dotfiles.conf;
     include /etc/nginx/include/no_symlinks.conf;
 
+    {% if listing %}
+        include /etc/nginx/include/listing.conf;
+    {% endif %}
+
     listen 80;
     listen [::]:80;
 
-    server_name ffnord.net www.ffnord.net nord.freifunk.net;
+    server_name {{ domains | join(" ") }};
 
-    root /var/www/ffnord.net/site;
+    root {{ document_root }};
 }
 

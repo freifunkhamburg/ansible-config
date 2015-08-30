@@ -1,0 +1,16 @@
+---
+- include: ../../includes/base-static/tasks/main.yml
+  vars:
+    site: media_ffhh
+    domains:
+      - media.services.ffhh
+      - media.hamburg.freifunk.net
+    document_root: /var/www/media
+    listing: true
+
+- name: create media root
+  file: path=/var/www/media state=directory owner=www-data group=www-data mode=0755
+  tags:
+    - nginx
+    - website
+    - media_ffhh

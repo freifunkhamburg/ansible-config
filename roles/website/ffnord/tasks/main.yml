@@ -1,30 +1,13 @@
 ---
-- name: configure ffnord.net site
-  copy: >
-    src=etc/nginx/sites-available/ffnord.net
-    dest=/etc/nginx/sites-available/ffnord.net
-    owner=root
-    group=root
-    mode=0644
-  notify: reload nginx config
-  tags:
-    - nginx
-    - website
-    - ffnord
-
-- name: enable ffnord.net site
-  file: >
-    src=/etc/nginx/sites-available/ffnord.net
-    dest=/etc/nginx/sites-enabled/ffnord.net
-    owner=root
-    group=root
-    mode=0644
-    state=link
-  notify: reload nginx config
-  tags:
-    - nginx
-    - website
-    - ffnord
+- include: ../../includes/base-static/tasks/main.yml
+  vars:
+    site: ffnord.net
+    domains:
+      - ffnord.net
+      - www.ffnord.net
+      - nord.freifunk.net
+    document_root: /var/www/ffnord.net/site
+    listing: false
 
 - name: clone ffnord.net repository
   git: repo=https://github.com/ffnord/ffnord.net.git dest=/var/www/ffnord.net

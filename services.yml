@@ -3,4 +3,5 @@
   roles:
     - ntp-server
     - website/ffnord
+    - website/media
 
