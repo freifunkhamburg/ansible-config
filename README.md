@@ -15,3 +15,7 @@ benötigt. Für diesen muss ein SSH-Key hinterlegt sein.
 ## Übernehmen der Änderungen für alle Hosts
 
     ansible-playbook site.yml -i production --sudo --ask-sudo-pass
+
+## Datenbanken
+
+In den Groupvars müssen Passwörter für die Datenbanken festgelegt werden.
