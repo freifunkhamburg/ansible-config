@@ -29,3 +29,6 @@ Einschränken auf bestimmte Tags, z. B. `nginx`:
 
     ansible-playbook site.yml -i production --sudo --ask-sudo-pass --tags nginx
     
+## Datenbanken
+
+In den Groupvars müssen Passwörter für die Datenbanken festgelegt werden.
