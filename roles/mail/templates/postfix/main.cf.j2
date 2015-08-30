@@ -3,8 +3,8 @@ myhostname                              = srv01.hamburg.freifunk.net
 mydestination                           = srv01, localhost.localdomain, localhost
 mynetworks                              = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 2.240.221.24/32 2.240.27.24/32
 
-smtp_bind_address                       = {{ ansible_eth0["ipv4"]["address"] }}
-smtp_bind_address6                      = {{ ansible_eth0["ipv6"]["address"] }}
+smtp_bind_address                       = {{ ansible_eth0.ipv4.address }}
+smtp_bind_address6                      = {{ ansible_eth0.ipv6[0].address }} 
 
 relay_domains                           = proxy:pgsql:/etc/postfix/pgsql/relay_domains.cf
 virtual_alias_maps                      = proxy:pgsql:/etc/postfix/pgsql/virtual_alias_maps.cf
