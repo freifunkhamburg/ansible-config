@@ -4,6 +4,7 @@
   tags: 
     - dovecot
     - mail
+
 - name: install dovecot modules
   apt: name={{ item }} state=latest
   with_items:
@@ -11,9 +12,10 @@
   tags:
     - dovecot
     - mail
+
 - name: install dovecot postgres modules
-  apt: name={{ items }} state=latest
-  with_item:
+  apt: name={{ item }} state=latest
+  with_items:
     - "dovecot-lmtpd"
     - "dovecot-pgsql"
   tags: 
