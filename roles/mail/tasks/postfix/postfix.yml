@@ -26,12 +26,12 @@
     - configs
 
 - name: templates postfix postgres
-  template: src=postfix/${item.src}.cf.j2 dest=/etc/postfix/${item}.cf
+  template: src={{ playbook_dir }}/roles/mail/templates/postfix/{{ item }}.cf.j2 dest=/etc/postfix/{{ item }}.cf
   with_items: 
-    - 'relay_domain'
+    - 'relay_domains'
     - 'virtual_alias_map'
     - 'virtual_domain_maps'
-    - 'virutal_mailbox_limits'
+    - 'virtual_mailbox_limits'
     - 'virtual_mailbox_maps'
   tags:
     - postfix
