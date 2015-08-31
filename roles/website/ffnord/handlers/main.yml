@@ -1,2 +1,2 @@
 ---
-- include: ../../includes/base-static/handlers/main.yml
+- include: "{{ playbook_dir }}/roles/website/includes/base-static/handlers/main.yml"
