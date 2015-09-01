@@ -1,0 +1,4 @@
+---
+db_mail_name: mail
+db_mail_user: <set_user_here>
+db_mail_password: <set_password_here>
