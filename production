@@ -3,3 +3,6 @@ srv04 ansible_ssh_host=80.252.100.116
 
 [ffhh]
 srv04
+
+[debian8]
+srv04
