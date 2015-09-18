@@ -1,2 +1,2 @@
 ---
-- include: ../../../../nginx/handlers/main.yml
+- include: "{{ playbook_dir }}/roles/nginx/handlers/main.yml"

@@ -1,5 +1,5 @@
 ---
-- include: ../../includes/base-static/tasks/main.yml
+- include: "{{ playbook_dir }}/roles/website/includes/base-static/tasks/main.yml"
   vars:
     site: ffhh_meta
     domains:
