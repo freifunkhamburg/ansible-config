@@ -1,0 +1,6 @@
+driver = pgsql
+connect = host=127.0.0.1 dbname={{ db_mail_password }} user={{ db_mail_user }} password={{ db_mail_name }}
+default_pass_scheme = MD5
+
+password_query = SELECT username AS user,password FROM mailbox WHERE username = '%u' AND active='t';
+user_query = SELECT maildir, 500 AS uid, 500 AS gid FROM mailbox WHERE username = '%u' AND active='t';

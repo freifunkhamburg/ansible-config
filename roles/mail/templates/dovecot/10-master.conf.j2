@@ -1,0 +1,26 @@
+default_login_user = dovenull
+
+default_internal_user = dovecot
+
+service imap-login {
+  inet_listener imaps {
+    port = 993
+    ssl = yes
+  }
+}
+
+service lmtp {
+  unix_listener lmtp {
+    #mode = 0666
+  }
+}
+
+service auth {
+ # Postfix smtp-auth
+  unix_listener /var/spool/postfix/private/auth {
+    mode = 0666
+  }
+
+ # Auth process is run as this user.
+ user = $default_internal_user
+}

@@ -24,3 +24,25 @@
     - database
     - postgres
     - postgresql
+
+- name: template dovecot-sql.conf.ext
+  template: src={{ playbook_dir }}/roles/mail/templates/dovecot/dovecot-sql.conf.ext.j2 dest=/etc/dovecot/dovecot-sql.conf.ext
+  tags:
+    - dovecot
+    - mail
+    - database
+    - postgresql
+    - postgres
+    - configs
+
+- name: template dovecot others
+  template: src={{ playbook_dir }}/roles/mail/templates/dovecot/10-{{ item }}.conf.j2 dest=/etc/postfix/pgsql/conf.d/{{ item }}.conf
+  with_items:
+  - 'auth'
+  - 'mail'
+  - 'master'
+  - 'ssl'
+  tags: 
+    - dovecot
+    - mail
+    - configs
