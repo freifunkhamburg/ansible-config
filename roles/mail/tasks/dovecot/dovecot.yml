@@ -1,7 +1,7 @@
 ---
 - name: install dovecot
   apt: name=dovecot-core state=latest
-  tags: 
+  tags:
     - dovecot
     - mail
 
@@ -18,11 +18,31 @@
   with_items:
     - "dovecot-lmtpd"
     - "dovecot-pgsql"
-  tags: 
+  tags:
     - dovecot
     - mail
     - database
     - postgres
+    - postgresql
+
+- name: create dovecot dir if nonexistent
+  file: path=/etc/dovecot state=directory mode=0755
+  tags:
+    - dovecot
+    - mail
+    - configs
+    - postgres
+    - database
+    - postgresql
+
+- name: create dovecot conf.d dir if nonexistent
+  file: path=/etc/dovecot/conf.d state=directory mode=0755
+  tags:
+    - dovecot
+    - mail
+    - configs
+    - postgres
+    - database
     - postgresql
 
 - name: template dovecot-sql.conf.ext
@@ -36,13 +56,13 @@
     - configs
 
 - name: template dovecot others
-  template: src={{ playbook_dir }}/roles/mail/templates/dovecot/10-{{ item }}.conf.j2 dest=/etc/postfix/pgsql/conf.d/{{ item }}.conf
+  template: src={{ playbook_dir }}/roles/mail/templates/dovecot/10-{{ item }}.conf.j2 dest=/etc/dovecot/conf.d/10-{{ item }}.conf
   with_items:
-  - 'auth'
-  - 'mail'
-  - 'master'
-  - 'ssl'
-  tags: 
+  - "auth"
+  - "mail"
+  - "master"
+  - "ssl"
+  tags:
     - dovecot
     - mail
     - configs
