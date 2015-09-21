@@ -1,4 +1,4 @@
 ---
-- include: roles/mail/tasks/postfix/postfix.yml
-- include: dovecot/dovecot.yml
+- include: postfix.yml
+- include: dovecot.yml
 - include: mailman.yml
