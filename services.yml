@@ -6,3 +6,4 @@
     - website/media
     - website/meta
     - mail
+    - postgres
