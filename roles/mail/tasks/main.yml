@@ -2,3 +2,4 @@
 - include: postfix.yml
 - include: dovecot.yml
 - include: mailman.yml
+- include: pgsql.yml
