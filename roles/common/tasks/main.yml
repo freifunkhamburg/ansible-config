@@ -1,4 +1,7 @@
 ---
+- name: run apt-get update
+  apt: update_cache=yes
+
 - name: install common packages
   apt: name={{ item }} state=latest
   with_items:
