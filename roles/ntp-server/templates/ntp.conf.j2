@@ -15,6 +15,8 @@ fudge  127.127.1.0 stratum 10
 server ptbtime1.ptb.de
 server ptbtime2.ptb.de
 server ptbtime3.ptb.de
+server 0.de.pool.ntp.org
+server 1.de.pool.ntp.org
 
 # Restrict all incoming connection
 restrict -4 default ignore
@@ -31,6 +33,6 @@ restrict -6 ::1
 # Disable the monlist request as this is associated with ntp
 # amplification attacks
 disable monitor
-restrict {{ prefix4.split("/")[0] }} mask {{ prefix4 | ipaddr('netmask') }} nomodify notrap nopeer
-restrict {{ prefix6.split("/")[0] }} mask {{ prefix6 | ipaddr('netmask') }} nomodify notrap nopeer
+restrict {{ ffhh.prefix4.split("/")[0] }} mask {{ ffhh.prefix4 | ipaddr('netmask') }} nomodify notrap nopeer
+restrict {{ ffhh.prefix6.split("/")[0] }} mask {{ ffhh.prefix6 | ipaddr('netmask') }} nomodify notrap nopeer
 

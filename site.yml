@@ -1,3 +1,8 @@
 ---
-- include: common.yml
-- include: services.yml
+- hosts: all
+  roles:
+    - common
+
+- hosts: ntp
+  roles:
+    - ntp-server

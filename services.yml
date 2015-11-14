@@ -1,8 +1,0 @@
----
-- hosts: services
-  roles:
-    - ntp-server
-    - website/ffnord
-    - website/media
-    - website/meta
-
