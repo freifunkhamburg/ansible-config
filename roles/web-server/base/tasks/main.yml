@@ -1,7 +1,7 @@
 ---
-#- name: be sure nginx is installed
-#  apt: name=nginx state=latest
-#  tags: nginx
+- name: be sure nginx is installed
+  apt: name=nginx state=latest
+  tags: nginx
 
 - name: check ssl directories exist an have correct permissions
   file: >
@@ -37,48 +37,66 @@
     - nginx
     - ssl
 
-#- name: copy includes
-#  copy: >
-#    src=etc/nginx/include
-#    dest=/etc/nginx
-#    mode=0644
-#    owner=root
-#    group=root
-#  notify:
-#    - restart nginx
-#  tags: nginx
-#
-#- name: apply templates
-#  template: >
-#    src="etc/nginx/{{ item }}.j2"
-#    dest="/etc/nginx/{{ item }}"
-#    mode=0644
-#    owner=root
-#    group=root
-#  items:
-#    - include/ssl_wildcard.conf
-#    - include/ssl_hamburg.freifunk.net.conf
-#  notify:
-#    - restart nginx
-#  tags: nginx
-#
-#- name: remove default site
-#  file: path={{ item }} state=absent
-#  with_items:
-#    - /etc/nginx/sites-available/default
-#    - /etc/nginx/sites-enabled/default
-#    - /var/www/html
-#  notify:
-#    - restart nginx
-#  tags: nginx
-#
-#- name: configure nginx
-#  copy: >
-#    src=etc/nginx/nginx.conf
-#    dest=/etc/nginx/nginx.conf
-#    mode=0644
-#    owner=root
-#    group=root
-#  notify:
-#    - restart nginx
-#  tags: nginx
+- name: copy includes
+  copy: >
+    backup=yes
+    src=etc/nginx/include
+    dest=/etc/nginx
+    mode=0644
+    owner=root
+    group=root
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: copy configs
+  copy: >
+    backup=yes
+    src=etc/nginx/conf.d
+    dest=/etc/nginx
+    mode=0644
+    owner=root
+    group=root
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: apply templates
+  template: >
+    backup=yes
+    src="etc/nginx/{{ item }}.j2"
+    dest="/etc/nginx/{{ item }}"
+    mode=0644
+    owner=root
+    group=root
+  with_items:
+    - include/ssl_wildcard.conf
+    - include/ssl_hamburg_freifunk_net.conf
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: remove default sites / configs
+  file: path={{ item }} state=absent
+  with_items:
+    - /etc/nginx/conf.d/default.conf_disabled
+    - /etc/nginx/conf.d/example_ssl.conf_disabled
+    - /etc/nginx/conf.d/mail.conf
+    - /etc/nginx/sites-available/default
+    - /etc/nginx/sites-enabled/default
+    - /var/www/html
+  notify:
+    - restart nginx
+  tags: nginx
+
+- name: configure nginx
+  copy: >
+    backup=yes
+    src=etc/nginx/nginx.conf
+    dest=/etc/nginx/nginx.conf
+    mode=0644
+    owner=root
+    group=root
+  notify:
+    - restart nginx
+  tags: nginx
