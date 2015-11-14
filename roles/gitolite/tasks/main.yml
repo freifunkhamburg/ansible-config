@@ -1,0 +1,19 @@
+---
+- name: install gitolite
+  apt: name=gitolite3 state=latest
+  tags:
+    - git
+    - gitolite
+
+- name: add git group
+  group: name=git state=present
+  tags:
+    - git
+    - gitolite
+
+- name: add git user
+  user: name=git group=git createhome=yes state=present
+  tags:
+    - git
+    - gitolite
+
