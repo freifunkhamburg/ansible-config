@@ -11,5 +11,8 @@
     - mosh
     - nano
     - python
+    - screen
+    - tmux
+    - vim
     - wget
     - zsh
