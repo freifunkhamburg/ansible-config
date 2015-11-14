@@ -1,0 +1,25 @@
+#
+# ACTHUNG:
+#
+# Wird via Ansible konfiguriert. Bitte nicht manuell ändern!
+#
+
+{% for port in item[1].ports %}
+server {
+    include /etc/nginx/include/no_logging.conf;
+    include /etc/nginx/include/no_dotfiles.conf;
+    include /etc/nginx/include/no_symlinks.conf;
+
+    {% if item[1].listing %}
+        include /etc/nginx/include/listing.conf;
+    {% endif %}
+
+    listen {{ port.number }}{% if port.ssl %} ssl{% endif %};
+    listen [::]:{{ port.number }}{% if port.ssl %} ssl{% endif %};
+
+    server_name {{ item[1].domains | join(" ") }};
+
+    root {{ item[1].document_root.path }};
+}
+
+{% endfor %}

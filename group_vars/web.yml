@@ -10,3 +10,24 @@ web:
       cert:    /etc/ssl/certs/WILDCARD.hamburg.freifunk.net.crt
       key:     /etc/ssl/private/WILDCARD.hamburg.freifunk.net.key
       dhparam: /etc/ssl/dhparam/WILDCARD.hamburg.freifunk.net.dh
+
+  sites:
+    static:
+      ffhh_media:
+        domains:
+          - media.services.ffhh
+          - media.hamburg.freifunk.net
+        ports:
+          - { number: 80, ssl: false }
+          - { number: 443, ssl: true }
+        document_root: { path: /var/www/media, create: true }
+        listing: true
+
+      ffhh_meta:
+        domains:
+          - meta.hamburg.freifunk.net
+        ports:
+          - { number: 80, ssl: false }
+          - { number: 443, ssl: true }
+        document_root: { path: /var/www/meta, create: true }
+        listing: true
