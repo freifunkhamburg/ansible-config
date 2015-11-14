@@ -1,6 +1,8 @@
 ---
 - name: run apt-get update
   apt: update_cache=yes
+  tags: 
+    - common
 
 - name: install common packages
   apt: name={{ item }} state=latest
@@ -13,3 +15,5 @@
     - python
     - wget
     - zsh
+  tags: 
+    - common
