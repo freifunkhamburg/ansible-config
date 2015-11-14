@@ -1,0 +1,12 @@
+---
+web:
+  ssl:
+    hamburg_freifunk_net:
+      cert:    /etc/ssl/certs/hamburg.freifunk.net.crt
+      key:     /etc/ssl/private/hamburg.freifunk.net.key
+      dhparam: /etc/ssl/dhparam/hamburg.freifunk.net.dh
+
+    wildcard_hamburg_freifunk_net:
+      cert:    /etc/ssl/certs/WILDCARD.hamburg.freifunk.net.crt
+      key:     /etc/ssl/private/WILDCARD.hamburg.freifunk.net.key
+      dhparam: /etc/ssl/dhparam/WILDCARD.hamburg.freifunk.net.dh

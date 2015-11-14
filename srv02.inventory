@@ -1,9 +1,10 @@
 srv02 ansible_ssh_host=srv02.hamburg.freifunk.net
 
-[ntp]
-srv02
-
 [ffhh]
 srv02
 
+[ntp]
+srv02
 
+[web]
+srv02

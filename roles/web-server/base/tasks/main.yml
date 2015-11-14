@@ -1,0 +1,84 @@
+---
+#- name: be sure nginx is installed
+#  apt: name=nginx state=latest
+#  tags: nginx
+
+- name: check ssl directories exist an have correct permissions
+  file: >
+    path="{{ item.path }}"
+    mode="{{ item.mode }}"
+    state=directory
+  with_items:
+    - { path: "/etc/ssl", mode: "0755" }
+    - { path: "/etc/ssl/certs", mode: "0755" }
+    - { path: "/etc/ssl/dhparam", mode: "0755" }
+    - { path: "/etc/ssl/private", mode: "0700" }
+  tags:
+    - nginx
+    - ssl
+
+- name: generate dhparams if those do not exist yet (can take a while)
+  command: "openssl dhparam -out {{ item }} 2048 creates={{ item }}"
+  with_items: "{{ web.ssl.values() | map(attribute = 'dhparam') | list }}"
+  tags:
+    - nginx
+    - ssl
+
+- name: check certificates exist and have correct permissions
+  file: >
+    path="{{ item }}"
+    mode="0400"
+    state=file
+  with_flattened:
+    - "{{ web.ssl.values() | map(attribute = 'cert')    | list }}"
+    - "{{ web.ssl.values() | map(attribute = 'key')     | list }}"
+    - "{{ web.ssl.values() | map(attribute = 'dhparam') | list }}"
+  tags:
+    - nginx
+    - ssl
+
+#- name: copy includes
+#  copy: >
+#    src=etc/nginx/include
+#    dest=/etc/nginx
+#    mode=0644
+#    owner=root
+#    group=root
+#  notify:
+#    - restart nginx
+#  tags: nginx
+#
+#- name: apply templates
+#  template: >
+#    src="etc/nginx/{{ item }}.j2"
+#    dest="/etc/nginx/{{ item }}"
+#    mode=0644
+#    owner=root
+#    group=root
+#  items:
+#    - include/ssl_wildcard.conf
+#    - include/ssl_hamburg.freifunk.net.conf
+#  notify:
+#    - restart nginx
+#  tags: nginx
+#
+#- name: remove default site
+#  file: path={{ item }} state=absent
+#  with_items:
+#    - /etc/nginx/sites-available/default
+#    - /etc/nginx/sites-enabled/default
+#    - /var/www/html
+#  notify:
+#    - restart nginx
+#  tags: nginx
+#
+#- name: configure nginx
+#  copy: >
+#    src=etc/nginx/nginx.conf
+#    dest=/etc/nginx/nginx.conf
+#    mode=0644
+#    owner=root
+#    group=root
+#  notify:
+#    - restart nginx
+#  tags: nginx

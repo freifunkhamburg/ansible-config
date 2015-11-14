@@ -1,0 +1,13 @@
+#
+# ACTHUNG:
+#
+# Wird via Ansible konfiguriert. Bitte nicht manuell ändern!
+#
+
+# Basis Konfiguration für SSL mit hamburg.freifunk.net-Zertifikat.
+
+ssl_certificate     {{ web.ssl.hamburg_freifunk_net.cert }};
+ssl_certificate_key {{ web.ssl.hamburg_freifunk_net.key }};
+ssl_dhparam         {{ web.ssl.hamburg_freifunk_net.dhparam }};
+
+include /etc/nginx/include/ssl_common.conf;

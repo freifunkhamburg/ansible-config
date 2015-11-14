@@ -1,0 +1,8 @@
+#
+# ACTHUNG:
+#
+# Wird via Ansible konfiguriert. Bitte nicht manuell ändern!
+#
+
+# Generischer Rewrite von HTTP nach HTTPS
+rewrite	^ https://$server_name$request_uri? permanent;

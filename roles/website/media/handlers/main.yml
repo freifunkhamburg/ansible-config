@@ -1,2 +1,0 @@
----
-- include: "{{ playbook_dir }}/roles/website/includes/base-static/handlers/main.yml"

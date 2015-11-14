@@ -6,3 +6,12 @@
 - hosts: ntp
   roles:
     - ntp-server
+
+# Webhosts
+- hosts: web
+  roles:
+    - web-server/base
+
+#- hosts: srv02
+#  roles:
+#    - web-server/updates
