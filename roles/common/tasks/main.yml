@@ -1,6 +1,10 @@
 ---
 - name: run apt-get update
   apt: update_cache=yes
+  tags:
+    - common
+    - packages
+    - apt
 
 - name: install common packages
   apt: name={{ item }} state=latest
@@ -16,3 +20,18 @@
     - vim
     - wget
     - zsh
+  tags:
+    - common
+    - packages
+    - apt
+
+- name: set message of the day
+  template: >
+    src=etc/motd.j2
+    dest=/etc/motd
+    mode=0444
+    owner=root
+    group=root
+  tags:
+    - common
+    - motd
