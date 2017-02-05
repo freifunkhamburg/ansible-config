@@ -1,19 +1,11 @@
 ---
-- name: run apt-get update
-  apt: update_cache=yes
-  tags: 
-    - common
-
-- name: install common packages
-  apt: name={{ item }} state=latest
-  with_items:
-    - aptitude
-    - curl
-    - git
-    - mosh
-    - nano
-    - python
-    - wget
-    - zsh
-  tags: 
-    - common
+- include: pre-tasks.yml
+  tags: common
+- include: secure-secure-shell.yml
+  tags: common
+- include: unattended-upgrades.yml
+  tags: common
+- include: user-sanity.yml
+  tags: common
+- include: post-tasks.yml
+  tags: common
