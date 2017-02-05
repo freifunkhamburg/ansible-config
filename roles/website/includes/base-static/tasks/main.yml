@@ -6,7 +6,7 @@
     owner=root
     group=root
     mode=0644
-  notify: reload nginx config
+  notify: reload nginx
   tags:
     - nginx
     - website
@@ -28,7 +28,7 @@
     group=root
     mode=0644
     state=link
-  notify: reload nginx config
+  notify: reload nginx
   tags:
     - nginx
     - website
