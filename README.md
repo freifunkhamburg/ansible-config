@@ -21,11 +21,12 @@ benötigt. Für diesen muss ein SSH-Key hinterlegt sein.
 
 ## Übernehmen der Änderungen für alle Hosts
 
-    ansible-playbook site.yml -i production --sudo --ask-sudo-pass
+    ansible-playbook site.yml -i production -bK
+
+Zum Testen kann noch `-C` angehängt werden.
 
 ## Ansible Convenience
 
 Einschränken auf bestimmte Tags, z. B. `nginx`:
 
-    ansible-playbook site.yml -i production --sudo --ask-sudo-pass --tags nginx
-    
+    ansible-playbook site.yml -i production -bK --tags nginx
