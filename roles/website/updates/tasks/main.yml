@@ -1,0 +1,19 @@
+---
+- name: copy updates_common.conf
+  copy:
+    src: files/updates_common.conf
+    dest: /etc/nginx/include
+  notify: reload nginx
+
+- name: template site
+  template:
+    src: templates/site.j2
+    dest: /etc/nginx/sites-available/{{ site }}
+  notify: reload nginx
+
+- name: enable site
+  file:
+    src: /etc/nginx/sites-available/{{ site }}
+    dest: /etc/nginx/sites-enabled/{{ site }}
+    state: link
+  notify: reload nginx

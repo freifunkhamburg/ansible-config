@@ -1,0 +1,4 @@
+---
+site: updates
+ssl_certificate: /etc/letsencrypt/live/updates.hamburg.freifunk.net/fullchain.pem
+ssl_certificate_key: /etc/letsencrypt/live/updates.hamburg.freifunk.net/privkey.pem

@@ -2,3 +2,7 @@
 - hosts: services
   roles:
     - ntp-server
+
+- hosts: updates
+  roles:
+    - website/updates

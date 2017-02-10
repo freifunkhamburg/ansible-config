@@ -1,6 +1,9 @@
 [services]
 srv04 ansible_ssh_host=80.252.100.116
 
+[updates]
+srv04
+
 [ffhh]
 srv04
 
