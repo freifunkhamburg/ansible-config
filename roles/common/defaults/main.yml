@@ -9,8 +9,6 @@ ssh_match_blocks: []
 unattended_upgrades_mail: false
 unattended_upgrades_origins:
   - o=${distro_id},n=${distro_codename},l=Debian-Security
-  - o=${distro_id},n=${distro_codename}-updates
-  - o=${distro_id},n=${distro_codename}-backports
 unattended_upgrades_reboot: "false"
 unattended_upgrades_reboot_time: "07:00"
 user_sanity_packages:
