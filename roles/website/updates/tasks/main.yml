@@ -1,10 +1,4 @@
 ---
-- name: copy updates_common.conf
-  copy:
-    src: files/updates_common.conf
-    dest: /etc/nginx/include
-  notify: reload nginx
-
 - name: template site
   template:
     src: templates/site.j2

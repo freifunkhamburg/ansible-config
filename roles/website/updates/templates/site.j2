@@ -7,18 +7,26 @@ server {
     ssl_certificate {{ updates_ssl_certificate }};
     ssl_certificate_key {{ updates_ssl_certificate_key }};
 
-    include /etc/nginx/include/updates_common.conf;
+    root /var/www/updates;
+
+    location / {
+        include /etc/nginx/include/headers_hsts.conf;
+        include /etc/nginx/include/listing.conf;
+    }
 }
 
+# Kein HTTPS Redirect wg. Paketinstallation auf Routern
 server {
     listen 80;
     listen [::]:80;
 
     server_name updates.hamburg.freifunk.net;
 
-    include /etc/nginx/include/updates_common.conf;
+    root /var/www/updates;
 
-    # Kein HTTPS Redirect wg. Paketinstallation auf Routern
+    location / {
+        include /etc/nginx/include/listing.conf;
+    }
 }
 
 server {
@@ -27,5 +35,9 @@ server {
 
     server_name 1.updates.services.ffhh;
 
-    include /etc/nginx/include/updates_common.conf;
+    root /var/www/updates;
+
+    location / {
+        include /etc/nginx/include/listing.conf;
+    }
 }
