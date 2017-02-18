@@ -4,8 +4,8 @@ server {
 
     server_name updates.hamburg.freifunk.net;
 
-    ssl_certificate {{ ssl_certificate }};
-    ssl_certificate_key {{ ssl_certificate_key }};
+    ssl_certificate {{ updates_ssl_certificate }};
+    ssl_certificate_key {{ updates_ssl_certificate_key }};
 
     include /etc/nginx/include/updates_common.conf;
 }
