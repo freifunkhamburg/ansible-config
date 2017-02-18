@@ -1,11 +1,10 @@
 [services]
-srv04 ansible_ssh_host=80.252.100.116
-
-[updates]
-srv04
+srv03 ansible_host=srv03.hamburg.freifunk.net
+srv04 ansible_host=srv04.hamburg.freifunk.net
 
 [ffhh]
+srv03
 srv04
 
-[debian8]
-srv04
+[updates]
+srv03
