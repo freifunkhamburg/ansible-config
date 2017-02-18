@@ -1,0 +1,24 @@
+---
+- name: create SSH key
+  command: ssh-keygen -b 4096 -C {{ ansible_nodename }} -f {{ certsync_key }}
+  args:
+    creates: "{{ certsync_key }}"
+  tags: certsync
+
+- name: template certsync script
+  template:
+    src: templates/certsync.j2
+    dest: "{{ certsync_script }}"
+    owner: root
+    group: staff
+    mode: 0550
+  tags: certsync
+
+- name: create cronjob
+  cron:
+    name: TLS Zertifikate synchronisieren
+    job: "{{ certsync_script }}"
+    minute: "0"
+    hour: "6"
+    day: "2"
+  tags: certsync

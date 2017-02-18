@@ -1,0 +1,5 @@
+---
+certsync_dir: /etc/ssl/certsync
+certsync_host: srv02.hamburg.freifunk.net
+certsync_key: /root/.ssh/certsync
+certsync_script: /usr/local/sbin/certsync
