@@ -13,6 +13,3 @@
   template:
     src: templates/50unattended-upgrades.j2
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
-  notify:
-    - upgrade packages
-    - clean package cache

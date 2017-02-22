@@ -1,8 +1,0 @@
----
-- name: upgrade packages
-  apt:
-    upgrade: full
-    update_cache: yes
-
-- name: clean package cache
-  command: apt-get clean
