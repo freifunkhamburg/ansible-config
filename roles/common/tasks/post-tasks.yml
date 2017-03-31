@@ -1,6 +1,0 @@
----
-- name: install expected packages
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ common_expected_packages }}"
