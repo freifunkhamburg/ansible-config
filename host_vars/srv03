@@ -1,3 +1,4 @@
+letsencrypt_srv02: true
+nginx_resolver: 80.252.105.162 80.252.105.194
 updates_ssl_certificate: /etc/ssl/certsync/updates.hamburg.freifunk.net.crt
 updates_ssl_certificate_key: /etc/ssl/certsync/updates.hamburg.freifunk.net.key
-nginx_resolver: 80.252.105.162 80.252.105.194
