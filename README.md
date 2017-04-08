@@ -2,7 +2,7 @@
 
 ## Vorraussetzungen
 
-Ansible wird nicht auf den Hosts installiert, sondern muss auf dem jeweiligen
+[Ansible][] wird nicht auf den Hosts installiert, sondern muss auf dem jeweiligen
 Rechner, von dem aus die Hosts verwaltet werden sollen installiert werden.
 
 Ansible kann zusammen mit den benötigten Abhängigkeiten wie folgt installiert
@@ -14,6 +14,8 @@ Unter NixOS kann alternativ über die default.nix eine nix-shell erzeugt werden:
 
     nix-shell
 
+  [Ansible]: https://docs.ansible.com/ansible/
+
 ### SSH
 
 Zur Konfiguration wird auf den Hosts jeweils ein Nutzer mit sudo-Rechten
@@ -21,12 +23,19 @@ benötigt. Für diesen muss ein SSH-Key hinterlegt sein.
 
 ## Übernehmen der Änderungen für alle Hosts
 
-    ansible-playbook site.yml -i production -bK
+    ./site
+
+Das Skript installiert externe Rollen und führt dann das Playbook `site.yml`
+aus.
 
 Zum Testen kann noch `-C` angehängt werden.
 
 ## Ansible Convenience
 
-Einschränken auf bestimmte Tags, z. B. `nginx`:
+Einschränken auf bestimmte Tags, z.B. `nginx`:
 
-    ansible-playbook site.yml -i production -bK --tags nginx
+    ./site -t nginx
+
+Einschränken auf bestimmte Hosts:
+
+    ./site -l srv03,srv04
