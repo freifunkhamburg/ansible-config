@@ -3,3 +3,5 @@
   roles:
     - role: basics
       tags: basics
+    - role: ffhh-basics
+      tags: basics

@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# This script assumes that you want to add a user with name
+# equal to a keyfile in the freiunkhamburg/ssh-keys repo
+# on github.
+#
+# This script assumes you know what you are doing. ;)
+#
+# .. ohrensessel, 2017
+#
+
+echoerr() { echo "$@" 1>&2; }
+
+if [ $# -eq 0 ]; then
+    echoerr Missing username
+    exit 1
+fi
+
+if [[ $EUID -ne 0 ]]; then
+    echoerr This script must be run as root
+    exit 1
+fi
+
+if id "$1" >/dev/null 2>&1; then
+    echoerr This user exists
+    exit 1
+fi
+
+wget -P /tmp https://raw.githubusercontent.com/freifunkhamburg/ssh-keys/master/"$1".pub &>/dev/null
+
+if [ $? -ne 0 ]
+then
+    echoerr Could not download key file, username not equal to name of key file?
+    exit 1
+fi
+
+echo
+echo Adding user with name "$1" and ssh keys:
+echo
+cat /tmp/"$1".pub
+echo
+
+read -p "Are you sure? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echoerr Aborting...
+    rm /tmp/"$1".pub
+    exit 1
+fi
+
+useradd -m -G sudo "$1"
+
+if [ $? -ne 0 ]
+then
+    echoerr Could not add user
+    rm /tmp/"$1".pub
+    exit 1
+fi
+
+echo "$1":test123 | chpasswd &>/dev/null
+chage -d0 "$1" &>/dev/null
+
+mkdir /home/"$1"/.ssh
+mv /tmp/"$1".pub /home/"$1"/.ssh/authorized_keys
+chown "$1":"$1" /home/"$1"/.ssh -R
+chmod 700 /home/"$1"/.ssh
+chmod 600 /home/"$1"/.ssh/authorized_keys

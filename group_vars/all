@@ -1,7 +1,2 @@
 ---
 basics_autoupdate_reboot: "false"
-basics_install_packages:
-  - mosh
-  - nano
-  - virtualenv
-  - zsh
