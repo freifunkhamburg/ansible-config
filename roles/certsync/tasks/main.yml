@@ -19,6 +19,6 @@
     name: TLS Zertifikate synchronisieren
     job: "{{ certsync_script }}"
     minute: "0"
-    hour: "6"
-    day: "2"
+    hour: "7"
+    weekday: "1"
   tags: certsync

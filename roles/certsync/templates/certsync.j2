@@ -9,7 +9,7 @@ if [ ! -d $CERT_DIR ]; then
   chmod 750 $CERT_DIR
 fi
 
-sftp -q -i {{ certsync_key }} certsync@{{ certsync_host }}:* "$CERT_DIR/" > /dev/null 2>&1
+sftp -p -q -i {{ certsync_key }} certsync@{{ certsync_host }}:* "$CERT_DIR/" > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   echo "Error getting certificates"
   exit 1
@@ -17,4 +17,7 @@ fi
 chown root.root $CERT_DIR/*
 chmod 440 $CERT_DIR/*
 
-service nginx reload > /dev/null
+COUNT=$(find $CERT_DIR -mtime -7 | wc -l)
+if [ $COUNT -gt 0 ]; then
+  service nginx reload > /dev/null
+fi
