@@ -1,3 +1,5 @@
+include /etc/nginx/include/node_hierarchy.conf;
+
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -9,9 +11,19 @@ server {
 
     root /var/www/updates;
 
+    if ($ffhh-sued) {
+        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
+    }
+
     location / {
         include /etc/nginx/include/headers_hsts.conf;
         include /etc/nginx/include/listing.conf;
+    }
+
+    location = /config {
+        root /etc/nginx/include;
+        try_files /node_hierarchy.conf =404;
+        default_type text/plain;
     }
 }
 
@@ -23,6 +35,10 @@ server {
     server_name updates.hamburg.freifunk.net;
 
     root /var/www/updates;
+
+    if ($ffhh-sued) {
+        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
+    }
 
     location / {
         include /etc/nginx/include/listing.conf;
@@ -40,6 +56,10 @@ server {
     server_name 1.updates.services.ffhh;
 
     root /var/www/updates;
+
+    if ($ffhh-sued) {
+        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
+    }
 
     location / {
         include /etc/nginx/include/listing.conf;
