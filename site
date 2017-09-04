@@ -1,6 +1,3 @@
 #!/bin/bash
 
-ANSIBLE_ROLES_PATH="$HOME/.ansible/roles"
-
-ansible-galaxy install -f -r requirements.yml
 ansible-playbook site.yml -i production -bK $*

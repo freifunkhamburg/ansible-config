@@ -25,8 +25,7 @@ benötigt. Für diesen muss ein SSH-Key hinterlegt sein.
 
     ./site
 
-Das Skript installiert externe Rollen und führt dann das Playbook `site.yml`
-aus.
+Das Skript führt das Playbook `site.yml` mit dem Inventar `production` aus.
 
 Zum Testen kann noch `-C` angehängt werden.
 
