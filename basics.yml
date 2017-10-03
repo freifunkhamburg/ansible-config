@@ -1,7 +1,11 @@
 ---
 - hosts: all
   roles:
-    - role: basics
-      tags: basics
-    - role: ffhh-basics
-      tags: basics
+    - basics
+    - ffhh-basics
+  tags: basics
+
+- hosts: letsrenew
+  roles:
+    - letsrenew
+  tags: letsrenew
