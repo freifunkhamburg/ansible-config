@@ -22,6 +22,11 @@
   notify: restart nginx
   tags: nginx
 
+- name: template letsencrypt.conf
+  template:
+    src: letsencrypt.conf.j2
+    dest: /etc/nginx/include/letsencrypt.conf
+
 - name: template nginx.conf
   template:
     src: templates/nginx.conf.j2

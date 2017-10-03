@@ -1,4 +1,15 @@
 ---
+- name: create ffupdates user
+  user:
+    name: ffupdates
+
+- name: create updates root
+  file:
+    path: "{{ updates_root }}"
+    owner: "{{ updates_owner }}"
+    group: "{{ updates_owner }}"
+    state: directory
+
 - name: template site
   template:
     src: templates/site.j2

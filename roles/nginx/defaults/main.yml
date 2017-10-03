@@ -1,1 +1,2 @@
+letsencrypt_webroot: /var/www/letsencrypt
 nginx_resolver: 127.0.0.1 [::1]

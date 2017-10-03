@@ -13,7 +13,7 @@
 
 - name: create webroot path
   file:
-    path: "{{ letsrenew_webroot }}"
+    path: "{{ letsencrypt_webroot }}"
     state: directory
 
 - name: create /etc/letsencrypt

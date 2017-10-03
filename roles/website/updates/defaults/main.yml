@@ -1,5 +1,7 @@
 ---
-letsencrypt_srv02: false
 site: updates
-updates_ssl_certificate: /etc/letsencrypt/live/updates.hamburg.freifunk.net/fullchain.pem
-updates_ssl_certificate_key: /etc/letsencrypt/live/updates.hamburg.freifunk.net/privkey.pem
+updates_letsencrypt_local: false
+updates_letsencrypt_srv01: false
+updates_letsencrypt_srv02: false
+updates_owner: ffupdates
+updates_root: /home/ffupdates/updates

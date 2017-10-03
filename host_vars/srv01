@@ -1,0 +1,2 @@
+nginx_resolver: 192.76.134.90 212.12.50.158
+updates_letsencrypt_local: true

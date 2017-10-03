@@ -1,5 +1,6 @@
 include /etc/nginx/include/node_hierarchy.conf;
 
+{% if updates_ssl_certificate is defined %}
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
@@ -9,7 +10,7 @@ server {
     ssl_certificate {{ updates_ssl_certificate }};
     ssl_certificate_key {{ updates_ssl_certificate_key }};
 
-    root /var/www/updates;
+    root {{ updates_root }};
 
     if ($ffhh-sued) {
         rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
@@ -27,6 +28,7 @@ server {
     }
 }
 
+{% endif %}
 # Kein HTTPS Redirect wg. Paketinstallation auf Routern
 server {
     listen 80;
@@ -34,7 +36,7 @@ server {
 
     server_name updates.hamburg.freifunk.net;
 
-    root /var/www/updates;
+    root {{ updates_root }};
 
     if ($ffhh-sued) {
         rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
@@ -43,7 +45,15 @@ server {
     location / {
         include /etc/nginx/include/listing.conf;
     }
-{% if letsencrypt_srv02 %}
+{% if updates_letsencrypt_local %}
+
+    include /etc/nginx/include/letsencrypt.conf;
+{% endif %}
+{% if updates_letsencrypt_srv01 %}
+
+    include /etc/nginx/include/letsencrypt_srv01.conf;
+{% endif %}
+{% if updates_letsencrypt_srv02 %}
 
     include /etc/nginx/include/letsencrypt_srv02.conf;
 {% endif %}
@@ -53,9 +63,9 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name 1.updates.services.ffhh;
+    server_name *.updates.services.ffhh;
 
-    root /var/www/updates;
+    root {{ updates_root }};
 
     if ($ffhh-sued) {
         rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
