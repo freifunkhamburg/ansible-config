@@ -5,6 +5,11 @@
     - ffhh-basics
   tags: basics
 
+- hosts: certsync
+  roles:
+    - certsync
+  tags: certsync
+
 - hosts: letsrenew
   roles:
     - letsrenew

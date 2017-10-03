@@ -3,13 +3,13 @@ srv01 ansible_host=srv01.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 srv04 ansible_host=srv04.hamburg.freifunk.net
 
+[certsync]
+srv03
+
 [letsrenew]
 srv01
 srv04
 
-[services]
-srv03
-srv04
-
 [updates]
+srv01
 srv03

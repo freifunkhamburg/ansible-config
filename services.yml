@@ -5,5 +5,5 @@
 
 - hosts: updates
   roles:
-    - certsync
     - website/updates
+  tags: updates
