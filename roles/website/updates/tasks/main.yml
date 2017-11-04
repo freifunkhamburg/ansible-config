@@ -7,8 +7,13 @@
   file:
     path: "{{ updates_root }}"
     owner: "{{ updates_owner }}"
-    group: "{{ updates_owner }}"
+    group: "{{ updates_group }}"
     state: directory
+
+- name: copy updates_domains.conf
+  copy:
+    src: updates_domains.conf
+    dest: /etc/nginx/include
 
 - name: template site
   template:

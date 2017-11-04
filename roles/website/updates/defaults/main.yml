@@ -4,4 +4,5 @@ updates_letsencrypt_local: false
 updates_letsencrypt_srv01: false
 updates_letsencrypt_srv02: false
 updates_owner: ffupdates
+updates_group: ffupdates
 updates_root: /home/ffupdates/updates

@@ -11,14 +11,11 @@ server {
     ssl_certificate_key {{ updates_ssl_certificate_key }};
 
     root {{ updates_root }};
-
-    if ($ffhh-sued) {
-        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
-    }
+    include /etc/nginx/include/updates_domains.conf;
+    include /etc/nginx/include/listing.conf;
 
     location / {
         include /etc/nginx/include/headers_hsts.conf;
-        include /etc/nginx/include/listing.conf;
     }
 
     location = /config {
@@ -37,14 +34,8 @@ server {
     server_name updates.hamburg.freifunk.net;
 
     root {{ updates_root }};
-
-    if ($ffhh-sued) {
-        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
-    }
-
-    location / {
-        include /etc/nginx/include/listing.conf;
-    }
+    include /etc/nginx/include/updates_domains.conf;
+    include /etc/nginx/include/listing.conf;
 {% if updates_letsencrypt_local %}
 
     include /etc/nginx/include/letsencrypt.conf;
@@ -66,12 +57,6 @@ server {
     server_name *.updates.services.ffhh;
 
     root {{ updates_root }};
-
-    if ($ffhh-sued) {
-        rewrite ^/(beta|experimental|stable)/(.*)$ /ffhh-sued/$1/$2;
-    }
-
-    location / {
-        include /etc/nginx/include/listing.conf;
-    }
+    include /etc/nginx/include/updates_domains.conf;
+    include /etc/nginx/include/listing.conf;
 }
