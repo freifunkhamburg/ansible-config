@@ -9,8 +9,3 @@
   roles:
     - certsync
   tags: certsync
-
-- hosts: letsrenew
-  roles:
-    - letsrenew
-  tags: letsrenew

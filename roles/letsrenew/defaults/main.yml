@@ -1,3 +1,0 @@
----
-letsencrypt_webroot: /var/www/letsencrypt
-letsrenew_email: ""

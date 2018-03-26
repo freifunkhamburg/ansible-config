@@ -1,3 +1,2 @@
 letsencrypt_webroot: /var/www/mail
-letsrenew_email: alexander@hamburg.freifunk.net
 nginx_resolver: 80.252.105.162 80.252.105.194

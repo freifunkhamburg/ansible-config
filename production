@@ -6,10 +6,6 @@ srv04 ansible_host=srv04.hamburg.freifunk.net
 [certsync]
 srv03
 
-[letsrenew]
-srv01
-srv04
-
 [updates]
 srv01
 srv03
