@@ -1,5 +1,6 @@
 [ffhh]
 srv01 ansible_host=srv01.hamburg.freifunk.net
+srv02 ansible_host=srv02.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 srv04 ansible_host=srv04.hamburg.freifunk.net
 
@@ -12,5 +13,6 @@ srv03
 
 [vms]
 srv01
+srv02
 srv03
 srv04

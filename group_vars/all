@@ -1,2 +1,1 @@
----
-basics_autoupdate_reboot: "false"
+basics_autoupdate_mail: backend@hamburg.freifunk.net
