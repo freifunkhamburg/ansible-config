@@ -7,6 +7,9 @@ srv04 ansible_host=srv04.hamburg.freifunk.net
 [certsync]
 srv03
 
+[hopglass-frontend]
+srv02
+
 [updates]
 srv01
 srv03

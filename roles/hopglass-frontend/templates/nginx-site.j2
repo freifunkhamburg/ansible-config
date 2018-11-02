@@ -1,0 +1,35 @@
+{% if hopglass_frontend_tls_crt is defined %}
+server {
+    server_name hopglass.hamburg.freifunk.net;
+
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate {{ hopglass_frontend_tls_crt }};
+    ssl_certificate_key {{ hopglass_frontend_tls_key }};
+
+    include include/no_logging.conf;
+    include include/ssl_common_headers.conf;
+
+    gzip on;
+    gzip_types application/json;
+    root {{ hopglass_frontend_path }}/build;
+}
+
+{% endif %}
+server {
+    server_name hopglass.hamburg.freifunk.net;
+
+    listen 80;
+    listen [::]:80;
+
+    include include/letsencrypt.conf;
+    include include/no_logging.conf;
+{% if hopglass_frontend_tls_crt is defined %}
+    include include/ssl.rewrite;
+{% else %}
+
+    gzip on;
+    gzip_types application/json;
+    root {{ hopglass_frontend_path }}/build;
+{% endif %}
+}

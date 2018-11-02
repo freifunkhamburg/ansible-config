@@ -1,4 +1,8 @@
 ---
+- hosts: hopglass-frontend
+  roles:
+    - hopglass-frontend
+
 - hosts: services
   roles:
     - ntp-server

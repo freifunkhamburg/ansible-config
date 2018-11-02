@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+cd {{ hopglass_frontend_path }}
+npm install
+npm install grunt-cli
+node_modules/.bin/grunt

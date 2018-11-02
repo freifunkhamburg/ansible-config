@@ -2,3 +2,5 @@ basics_autoupdate_origins:
   - o=Node Source,n=${distro_codename}
   - o=Prosody,n=${distro_codename}
   - o=TorProject,n=${distro_codename}
+hopglass_frontend_tls_crt: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/fullchain.pem
+hopglass_frontend_tls_key: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/privkey.pem
