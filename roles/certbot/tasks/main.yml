@@ -1,0 +1,38 @@
+---
+- name: create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /etc/letsencrypt/renewal-hooks/deploy
+    - /etc/letsencrypt/renewal-hooks/post
+    - /etc/letsencrypt/renewal-hooks/pre
+    - /var/www/_acme-challenge
+
+- name: download certbot-auto
+  get_url:
+    url: "https://dl.eff.org/certbot-auto"
+    dest: /usr/local/sbin
+    mode: 0755
+
+- name: copy cli.ini
+  copy:
+    src: cli.ini
+    dest: /etc/letsencrypt/
+
+- name: create renewal cronjob
+  cron:
+    name: "Let's Encrypt certificate renewal"
+    job: /usr/local/sbin/certbot-auto renew -q
+    hour: 6
+    minute: 0
+
+- name: populate service facts
+  service_facts:
+
+- name: copy reload-nginx hook
+  copy:
+    src: reload-nginx
+    dest: /etc/letsencrypt/renewal-hooks/post/
+    mode: 0755
+  when: "'nginx' in services"
