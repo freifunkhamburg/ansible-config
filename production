@@ -10,11 +10,15 @@ srv03
 [hopglass-frontend]
 srv02
 
+[nginx]
+gw03-new ansible_host=gw03-new.hamburg.freifunk.net
+
 [updates]
 srv01
 srv03
 
 [vms]
+gw03-new
 srv01
 srv02
 srv03

@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: ffhh
   roles:
     - basics
     - ffhh-basics
@@ -9,3 +9,8 @@
   roles:
     - certsync
   tags: certsync
+
+- hosts: nginx
+  roles:
+    - nginx
+  tags: nginx

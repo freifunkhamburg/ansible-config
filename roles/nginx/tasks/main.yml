@@ -1,39 +1,36 @@
 ---
 - name: install nginx
   apt:
-    name: nginx
-    state: present
-  tags: nginx
+    name: "{{ nginx_package }}"
+    cache_valid_time: 86400
 
-- name: disable default site
+- name: create directories
   file:
-    path: /etc/nginx/sites-enabled/default
-    state: absent
-  notify: restart nginx
-  tags: nginx
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /var/www/_acme-challenge
+    - /var/www/_error-pages
 
-- name: copy includes
+- name: copy error-pages
   copy:
-    src: etc/nginx/include
-    dest: /etc/nginx
-    mode: 0644
-    owner: root
-    group: root
-  notify: restart nginx
-  tags: nginx
+    src: error-pages/
+    dest: /var/www/_error-pages/
 
-- name: template letsencrypt.conf
-  template:
-    src: letsencrypt.conf.j2
-    dest: /etc/nginx/include/letsencrypt.conf
+- name: copy snippets
+  copy:
+    src: snippets/
+    dest: /etc/nginx/snippets/
 
 - name: template nginx.conf
   template:
-    src: templates/nginx.conf.j2
+    src: nginx.conf.j2
     dest: /etc/nginx/nginx.conf
-    mode: 0644
-    owner: root
-    group: root
     backup: yes
-  notify: restart nginx
-  tags: nginx
+  notify: reload nginx
+
+- name: remove default site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: reload nginx

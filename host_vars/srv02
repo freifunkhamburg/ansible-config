@@ -4,3 +4,4 @@ basics_autoupdate_origins:
   - o=TorProject,n=${distro_codename}
 hopglass_frontend_tls_crt: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/fullchain.pem
 hopglass_frontend_tls_key: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/privkey.pem
+nginx_resolver: 127.0.0.1
