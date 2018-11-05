@@ -1,7 +1,6 @@
 {% if hopglass_frontend_tls_crt is defined %}
 server {
-    server_name hopglass.hamburg.freifunk.net;
-
+    server_name map.hamburg.freifunk.net hopglass.hamburg.freifunk.net;
     listen 443 ssl;
     listen [::]:443 ssl;
     ssl_certificate {{ hopglass_frontend_tls_crt }};
@@ -17,8 +16,7 @@ server {
 
 {% endif %}
 server {
-    server_name hopglass.hamburg.freifunk.net;
-
+    server_name map.hamburg.freifunk.net hopglass.hamburg.freifunk.net;
     listen 80;
     listen [::]:80;
 
