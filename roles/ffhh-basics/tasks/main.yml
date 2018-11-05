@@ -1,13 +1,12 @@
 ---
 - name: install popular user packages
   apt:
-    name: "{{ item }}"
+    name:
+      - mosh
+      - nano
+      - wget
+      - zsh
     state: present
-  with_items:
-    - mosh
-    - nano
-    - wget
-    - zsh
 
 - name: copy new-user script
   copy:
