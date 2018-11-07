@@ -9,11 +9,17 @@
     - /etc/letsencrypt/renewal-hooks/pre
     - /var/www/_acme-challenge
 
+- name: check for certbot-auto
+  stat:
+    path: /usr/local/sbin/certbot-auto
+  register: certbot
+
 - name: download certbot-auto
   get_url:
     url: "https://dl.eff.org/certbot-auto"
     dest: /usr/local/sbin
     mode: 0755
+  when: not certbot.stat.exists
 
 - name: copy cli.ini
   copy:
