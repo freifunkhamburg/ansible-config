@@ -1,51 +1,38 @@
-{% if updates_ssl_certificate is defined %}
+{% if updates_tls_crt is defined %}
 server {
+    server_name updates.hamburg.freifunk.net;
     listen 443 ssl;
     listen [::]:443 ssl;
-
-    server_name updates.hamburg.freifunk.net;
-
-    ssl_certificate {{ updates_ssl_certificate }};
-    ssl_certificate_key {{ updates_ssl_certificate_key }};
+    ssl_certificate {{ updates_tls_crt }};
+    ssl_certificate_key {{ updates_tls_key }};
 
     root {{ updates_root }};
-    include /etc/nginx/include/listing.conf;
-
-    location / {
-        include /etc/nginx/include/headers_hsts.conf;
-    }
+    include snippets/autoindex.conf;
+    include snippets/header-hsts.conf;
 }
 
 {% endif %}
 # Kein HTTPS Redirect wg. Paketinstallation auf Routern
 server {
+    server_name updates.hamburg.freifunk.net;
     listen 80;
     listen [::]:80;
 
-    server_name updates.hamburg.freifunk.net;
-
     root {{ updates_root }};
-    include /etc/nginx/include/listing.conf;
-{% if updates_letsencrypt_local %}
+    include snippets/autoindex.conf;
 
-    include /etc/nginx/include/letsencrypt.conf;
-{% endif %}
-{% if updates_letsencrypt_srv01 %}
-
-    include /etc/nginx/include/letsencrypt_srv01.conf;
-{% endif %}
-{% if updates_letsencrypt_srv02 %}
-
-    include /etc/nginx/include/letsencrypt_srv02.conf;
+{% if updates_letsencrypt == 'local' %}
+    include snippets/location-acme.conf;
+{% elif updates_letsencrypt == 'srv01' %}
+    include snippets/location-acme-srv01.conf;
 {% endif %}
 }
 
 server {
+    server_name *.updates.services.ffhh;
     listen 80;
     listen [::]:80;
 
-    server_name *.updates.services.ffhh;
-
     root {{ updates_root }};
-    include /etc/nginx/include/listing.conf;
+    include snippets/autoindex.conf;
 }

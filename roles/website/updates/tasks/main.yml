@@ -18,7 +18,7 @@
 
 - name: enable site
   file:
-    src: /etc/nginx/sites-available/{{ site }}
+    src: ../sites-available/{{ site }}
     dest: /etc/nginx/sites-enabled/{{ site }}
     state: link
   notify: reload nginx

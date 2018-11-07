@@ -4,6 +4,9 @@ srv02 ansible_host=srv02.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 srv04 ansible_host=srv04.hamburg.freifunk.net
 
+[certbot]
+srv01
+
 [certsync]
 srv03
 

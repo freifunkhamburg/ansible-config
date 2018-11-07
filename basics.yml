@@ -5,6 +5,11 @@
     - ffhh-basics
   tags: basics
 
+- hosts: certbot
+  roles:
+    - certbot
+  tags: certbot
+
 - hosts: certsync
   roles:
     - certsync
