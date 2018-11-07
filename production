@@ -13,6 +13,9 @@ srv03
 [hopglass-frontend]
 srv02
 
+[media]
+srv02
+
 [nginx]
 gw03-new ansible_host=gw03-new.hamburg.freifunk.net
 

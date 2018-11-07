@@ -1,0 +1,24 @@
+{% if media_tls_crt is defined %}
+server {
+    server_name media.hamburg.freifunk.net;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate {{ media_tls_crt }};
+    ssl_certificate_key {{ media_tls_key }};
+
+    root {{ media_root }};
+    include snippets/autoindex.conf;
+    include snippets/header-hsts.conf;
+    include snippets/no-unsafe-files.conf;
+}
+
+{% endif %}
+server {
+    server_name media.hamburg.freifunk.net;
+    listen 80;
+    listen [::]:80;
+
+    return 302 https://$server_name$request_uri;
+
+    include snippets/location-acme.conf;
+}

@@ -7,6 +7,11 @@
   roles:
     - ntp-server
 
+- hosts: media
+  roles:
+    - website/media
+  tags: media
+
 - hosts: updates
   roles:
     - website/updates
