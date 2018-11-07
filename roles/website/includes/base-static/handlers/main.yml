@@ -1,2 +1,0 @@
----
-- include: "{{ playbook_dir }}/roles/nginx/handlers/main.yml"
