@@ -1,0 +1,30 @@
+{% if meta_tls_crt is defined %}
+server {
+    server_name meta.hamburg.freifunk.net;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate {{ meta_tls_crt }};
+    ssl_certificate_key {{ meta_tls_key }};
+
+    root {{ meta_root }};
+    include snippets/autoindex.conf;
+    include snippets/header-hsts.conf;
+    include snippets/no-unsafe-files.conf;
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME /var/www/meta$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+
+{% endif %}
+server {
+    server_name meta.hamburg.freifunk.net;
+    listen 80;
+    listen [::]:80;
+
+    return 302 https://$server_name$request_uri;
+
+    include snippets/location-acme.conf;
+}

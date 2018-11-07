@@ -1,12 +1,13 @@
 ---
-- include: "{{ playbook_dir }}/roles/website/includes/base-static/tasks/main.yml"
-  vars:
-    site: ffhh_meta
-    domains:
-      - meta.hamburg.freifunk.net
-    ports:
-      - { number: 80, ssl: false }
-      - { number: 443, ssl: true }
-    document_root: { path: /var/www/ffhh/meta, create: true }
-    listing: true
+- name: template site
+  template:
+    src: templates/site.j2
+    dest: /etc/nginx/sites-available/{{ site }}
+  notify: reload nginx
 
+- name: enable site
+  file:
+    src: ../sites-available/{{ site }}
+    dest: /etc/nginx/sites-enabled/{{ site }}
+    state: link
+  notify: reload nginx

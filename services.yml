@@ -12,6 +12,11 @@
     - website/media
   tags: media
 
+- hosts: meta
+  roles:
+    - website/meta
+  tags: meta
+
 - hosts: updates
   roles:
     - website/updates

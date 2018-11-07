@@ -6,4 +6,6 @@ hopglass_frontend_tls_crt: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/f
 hopglass_frontend_tls_key: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/privkey.pem
 media_tls_crt: /etc/letsencrypt/live/media.hamburg.freifunk.net/fullchain.pem
 media_tls_key: /etc/letsencrypt/live/media.hamburg.freifunk.net/privkey.pem
+meta_tls_crt: /etc/letsencrypt/live/hamburg.freifunk.net/fullchain.pem
+meta_tls_key: /etc/letsencrypt/live/hamburg.freifunk.net/privkey.pem
 nginx_resolver: 127.0.0.1
