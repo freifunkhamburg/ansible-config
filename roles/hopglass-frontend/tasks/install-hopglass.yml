@@ -19,14 +19,15 @@
 - name: template nginx site
   template:
     src: nginx-site.j2
-    dest: /etc/nginx/conf.d/hopglass.conf
-  register: nginx
+    dest: /etc/nginx/sites-available/hopglass
+  notify: reload nginx
 
-- name: reload nginx
-  service:
-    name: nginx
-    state: reloaded
-  when: nginx.changed
+- name: enable site
+  file:
+    src: ../sites-available/hopglass
+    dest: /etc/nginx/sites-enabled/hopglass
+    state: link
+  notify: reload nginx
 
 - name: template make-hopglass-frontend
   template:
