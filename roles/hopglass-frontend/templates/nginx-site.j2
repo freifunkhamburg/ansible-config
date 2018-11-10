@@ -6,11 +6,9 @@ server {
     ssl_certificate {{ hopglass_frontend_tls_crt }};
     ssl_certificate_key {{ hopglass_frontend_tls_key }};
 
-    include include/no_logging.conf;
-    include include/ssl_common_headers.conf;
+    include snippets/header-hsts.conf;
+    include snippets/no-unsafe-files.conf;
 
-    gzip on;
-    gzip_types application/json;
     root {{ hopglass_frontend_path }}/build;
 }
 
@@ -20,14 +18,13 @@ server {
     listen 80;
     listen [::]:80;
 
-    include include/letsencrypt.conf;
-    include include/no_logging.conf;
 {% if hopglass_frontend_tls_crt is defined %}
-    include include/ssl.rewrite;
+    return 302 https://$host$request_uri;
 {% else %}
+    include snippets/no-unsafe-files.conf;
 
-    gzip on;
-    gzip_types application/json;
     root {{ hopglass_frontend_path }}/build;
 {% endif %}
+
+    include snippets/location-acme.conf;
 }
