@@ -7,6 +7,7 @@ server {
     ssl_certificate_key {{ hopglass_frontend_tls_key }};
 
     include snippets/header-hsts.conf;
+    include snippets/header-security.conf;
     include snippets/no-unsafe-files.conf;
 
     root {{ hopglass_frontend_path }}/build;
@@ -19,8 +20,11 @@ server {
     listen [::]:80;
 
 {% if hopglass_frontend_tls_crt is defined %}
-    return 302 https://$host$request_uri;
+    location / {
+        return 302 https://$host$request_uri;
+    }
 {% else %}
+    include snippets/header-security.conf;
     include snippets/no-unsafe-files.conf;
 
     root {{ hopglass_frontend_path }}/build;

@@ -6,10 +6,12 @@ server {
     ssl_certificate {{ media_tls_crt }};
     ssl_certificate_key {{ media_tls_key }};
 
-    root {{ media_root }};
     include snippets/autoindex.conf;
     include snippets/header-hsts.conf;
+    include snippets/header-security.conf;
     include snippets/no-unsafe-files.conf;
+
+    root {{ media_root }};
 }
 
 {% endif %}
@@ -18,7 +20,9 @@ server {
     listen 80;
     listen [::]:80;
 
-    return 302 https://$server_name$request_uri;
+    location / {
+        return 302 https://$server_name$request_uri;
+    }
 
     include snippets/location-acme.conf;
 }

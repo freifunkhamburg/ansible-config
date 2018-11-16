@@ -6,6 +6,7 @@ srv04 ansible_host=srv04.hamburg.freifunk.net
 
 [certbot]
 srv01
+srv02
 
 [certsync]
 srv03

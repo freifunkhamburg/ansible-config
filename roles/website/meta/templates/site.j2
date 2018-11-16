@@ -6,10 +6,12 @@ server {
     ssl_certificate {{ meta_tls_crt }};
     ssl_certificate_key {{ meta_tls_key }};
 
-    root {{ meta_root }};
     include snippets/autoindex.conf;
     include snippets/header-hsts.conf;
+    include snippets/header-security.conf;
     include snippets/no-unsafe-files.conf;
+
+    root {{ meta_root }};
 
     location ~ \.php$ {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
@@ -24,7 +26,9 @@ server {
     listen 80;
     listen [::]:80;
 
-    return 302 https://$server_name$request_uri;
+    location / {
+        return 302 https://$server_name$request_uri;
+    }
 
     include snippets/location-acme.conf;
 }

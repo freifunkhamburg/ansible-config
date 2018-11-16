@@ -6,9 +6,12 @@ server {
     ssl_certificate {{ updates_tls_crt }};
     ssl_certificate_key {{ updates_tls_key }};
 
-    root {{ updates_root }};
     include snippets/autoindex.conf;
     include snippets/header-hsts.conf;
+    include snippets/header-security.conf;
+    include snippets/no-unsafe-files.conf;
+
+    root {{ updates_root }};
 }
 
 {% endif %}
@@ -18,8 +21,11 @@ server {
     listen 80;
     listen [::]:80;
 
-    root {{ updates_root }};
     include snippets/autoindex.conf;
+    include snippets/header-security.conf;
+    include snippets/no-unsafe-files.conf;
+
+    root {{ updates_root }};
 
 {% if updates_letsencrypt == 'local' %}
     include snippets/location-acme.conf;
@@ -33,6 +39,9 @@ server {
     listen 80;
     listen [::]:80;
 
-    root {{ updates_root }};
     include snippets/autoindex.conf;
+    include snippets/header-security.conf;
+    include snippets/no-unsafe-files.conf;
+
+    root {{ updates_root }};
 }
