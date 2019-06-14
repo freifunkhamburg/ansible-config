@@ -6,12 +6,18 @@ server {
     ssl_certificate {{ updates_tls_crt }};
     ssl_certificate_key {{ updates_tls_key }};
 
-    include snippets/autoindex.conf;
     include snippets/header-hsts.conf;
     include snippets/header-security.conf;
     include snippets/no-unsafe-files.conf;
 
     root {{ updates_root }};
+    location / {
+        # First attempt to serve request as file, then
+        # as directory, then fall back to displaying a 404.
+        try_files $uri $uri/ =404;
+        fancyindex on;
+        fancyindex_name_length 120;
+    }
 }
 
 {% endif %}
@@ -35,7 +41,7 @@ server {
 }
 
 server {
-    server_name *.updates.services.ffhh;
+    server_name updates-a.hamburg.freifunk.net updates-b.hamburg.freifunk.net;
     listen 80;
     listen [::]:80;
 
