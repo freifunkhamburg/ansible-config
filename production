@@ -1,24 +1,20 @@
 [ffhh]
 srv01 ansible_host=srv01.hamburg.freifunk.net
-srv02 ansible_host=srv02.hamburg.freifunk.net
+#srv02 ansible_host=srv02.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
-srv04 ansible_host=srv04.hamburg.freifunk.net
 
 [certbot]
 srv01
-srv02
+#srv02
 
 [certsync]
 srv03
 
-[hopglass-frontend]
-srv02
-
 [media]
-srv02
+#srv02
 
 [meta]
-srv02
+#srv02
 
 [nginx]
 gw03-new ansible_host=gw03-new.hamburg.freifunk.net
@@ -30,6 +26,5 @@ srv03
 [vms]
 gw03-new
 srv01
-srv02
+#srv02
 srv03
-srv04
