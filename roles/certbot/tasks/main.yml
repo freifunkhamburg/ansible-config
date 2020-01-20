@@ -30,8 +30,8 @@
   cron:
     name: "Let's Encrypt certificate renewal"
     job: /usr/local/sbin/certbot-auto renew -q
-    hour: 6
-    minute: 0
+    hour: "6"
+    minute: "0"
 
 - name: populate service facts
   service_facts:
