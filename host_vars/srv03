@@ -1,5 +1,6 @@
 certsync_host: srv01.hamburg.freifunk.net
 nginx_resolver: 80.252.105.162 80.252.105.194
+nginx_tls_versions: TLSv1.2
 updates_group: www-data
 updates_letsencrypt: srv01
 updates_owner: ffupdates

@@ -1,7 +1,7 @@
 ---
 - name: install nginx
   apt:
-    name: "{{ nginx_package }}"
+    name: "{{ nginx_packages }}"
     cache_valid_time: 86400
 
 - name: create directories
@@ -19,13 +19,20 @@
 
 - name: copy snippets
   copy:
-    src: snippets/
-    dest: /etc/nginx/snippets/
+    src: snippets
+    dest: /etc/nginx/
+
+- name: copy openssl.cnf
+  copy:
+    src: openssl.cnf
+    dest: /etc/ssl/
+    backup: yes
+  notify: restart nginx
 
 - name: template nginx.conf
   template:
-    src: nginx.conf.j2
-    dest: /etc/nginx/nginx.conf
+    src: nginx.conf
+    dest: /etc/nginx/
     backup: yes
   notify: reload nginx
 
