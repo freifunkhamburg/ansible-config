@@ -1,0 +1,1 @@
+nginx_worker_connections: 1024
