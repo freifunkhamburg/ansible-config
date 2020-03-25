@@ -1,0 +1,2 @@
+basics_autoupdate_origins:
+  - o=TorProject,n=${distro_codename}
