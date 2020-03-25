@@ -5,6 +5,7 @@ srv01 ansible_host=srv01.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 
 [certbot]
+jitsi
 srv01
 #srv02
 

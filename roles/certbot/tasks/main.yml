@@ -1,37 +1,18 @@
 ---
-- name: create directories
+- name: install certbot
+  apt:
+    name: certbot
+    cache_valid_time: 86400
+
+- name: create webroot directory
   file:
-    path: "{{ item }}"
+    path: /var/www/_acme-challenge
     state: directory
-  with_items:
-    - /etc/letsencrypt/renewal-hooks/deploy
-    - /etc/letsencrypt/renewal-hooks/post
-    - /etc/letsencrypt/renewal-hooks/pre
-    - /var/www/_acme-challenge
-
-- name: check for certbot-auto
-  stat:
-    path: /usr/local/sbin/certbot-auto
-  register: certbot
-
-- name: download certbot-auto
-  get_url:
-    url: "https://dl.eff.org/certbot-auto"
-    dest: /usr/local/sbin
-    mode: 0755
-  when: not certbot.stat.exists
 
 - name: copy cli.ini
   copy:
     src: cli.ini
     dest: /etc/letsencrypt/
-
-- name: create renewal cronjob
-  cron:
-    name: "Let's Encrypt certificate renewal"
-    job: /usr/local/sbin/certbot-auto renew -q
-    hour: "6"
-    minute: "0"
 
 - name: populate service facts
   service_facts:
