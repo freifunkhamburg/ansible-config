@@ -19,5 +19,5 @@ chmod 440 $CERT_DIR/*
 
 COUNT=$(find $CERT_DIR -mtime -7 | wc -l)
 if [ $COUNT -gt 0 ]; then
-  service nginx reload > /dev/null
+  systemctl reload nginx > /dev/null
 fi

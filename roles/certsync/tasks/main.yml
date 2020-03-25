@@ -7,18 +7,24 @@
 
 - name: template certsync script
   template:
-    src: templates/certsync.j2
-    dest: "{{ certsync_script }}"
+    src: certsync
+    dest: /usr/local/sbin/
     owner: root
     group: staff
     mode: 0550
   tags: certsync
 
-- name: create cronjob
-  cron:
-    name: TLS Zertifikate synchronisieren
-    job: "{{ certsync_script }}"
-    minute: "0"
-    hour: "7"
-    weekday: "1"
-  tags: certsync
+- name: template certsync timer
+  template:
+    src: "{{ item }}"
+    dest: /lib/systemd/system/
+  with_items:
+    - certsync.service
+    - certsync.timer
+
+- name: enable certsync timer
+  systemd:
+    name: certsync.timer
+    state: started
+    enabled: yes
+    daemon_reload: yes

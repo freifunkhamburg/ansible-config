@@ -1,0 +1,6 @@
+[Unit]
+Description=Synchronize TLS certificates from {{ certsync_host }}
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/certsync
