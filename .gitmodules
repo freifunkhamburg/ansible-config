@@ -1,3 +1,6 @@
 [submodule "roles/basics"]
 	path = roles/basics
 	url = https://github.com/7adietri/ansible-basics.git
+[submodule "roles/nginx"]
+	path = roles/nginx
+	url = https://github.com/7adietri/ansible-nginx.git
