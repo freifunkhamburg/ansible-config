@@ -11,6 +11,7 @@ server {
     include snippets/no-unsafe-files.conf;
 
     root {{ updates_root }};
+
     location / {
         # First attempt to serve request as file, then
         # as directory, then fall back to displaying a 404.
@@ -23,7 +24,7 @@ server {
 {% endif %}
 # Kein HTTPS Redirect wg. Paketinstallation auf Routern
 server {
-    server_name updates.hamburg.freifunk.net;
+    server_name updates.hamburg.freifunk.net updates-a.hamburg.freifunk.net updates-b.hamburg.freifunk.net;
     listen 80;
     listen [::]:80;
 
@@ -34,20 +35,11 @@ server {
     root {{ updates_root }};
 
 {% if updates_letsencrypt == 'local' %}
-    include snippets/location-acme.conf;
+    location ^~ /.well-known/acme-challenge {
+        root /var/www/_acme-challenge;
+        access_log off;
+    }
 {% elif updates_letsencrypt == 'srv01' %}
     include snippets/location-acme-srv01.conf;
 {% endif %}
-}
-
-server {
-    server_name updates-a.hamburg.freifunk.net updates-b.hamburg.freifunk.net;
-    listen 80;
-    listen [::]:80;
-
-    include snippets/autoindex.conf;
-    include snippets/header-security.conf;
-    include snippets/no-unsafe-files.conf;
-
-    root {{ updates_root }};
 }

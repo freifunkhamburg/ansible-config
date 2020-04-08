@@ -12,13 +12,13 @@
 
 - name: template site
   template:
-    src: templates/site.j2
-    dest: /etc/nginx/sites-available/{{ site }}
+    src: updates
+    dest: /etc/nginx/sites-available/
   notify: reload nginx
 
 - name: enable site
   file:
-    src: ../sites-available/{{ site }}
-    dest: /etc/nginx/sites-enabled/{{ site }}
+    src: /etc/nginx/sites-available/updates
+    dest: /etc/nginx/sites-enabled/updates
     state: link
   notify: reload nginx

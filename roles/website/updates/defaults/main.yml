@@ -1,5 +1,4 @@
 ---
-site: updates
 updates_group: ffupdates
 updates_letsencrypt: local
 updates_owner: ffupdates
