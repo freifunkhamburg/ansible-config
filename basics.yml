@@ -8,6 +8,7 @@
 - hosts: nginx
   roles:
     - nginx
+    - nginx-extra
     - error-pages
   tags: nginx
 

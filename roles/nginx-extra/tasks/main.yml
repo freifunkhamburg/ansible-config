@@ -1,0 +1,5 @@
+---
+- name: copy snippets
+  copy:
+    src: snippets/
+    dest: /etc/nginx/snippets/
