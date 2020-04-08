@@ -5,6 +5,12 @@
     - ffhh-basics
   tags: basics
 
+- hosts: nginx
+  roles:
+    - nginx
+    - error-pages
+  tags: nginx
+
 - hosts: certbot
   roles:
     - certbot
@@ -14,8 +20,3 @@
   roles:
     - certsync
   tags: certsync
-
-- hosts: nginx
-  roles:
-    - nginx
-  tags: nginx

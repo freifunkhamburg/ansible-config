@@ -1,0 +1,15 @@
+---
+- name: create directory
+  file:
+    path: /var/www/_error-pages
+    state: directory
+
+- name: copy error-pages
+  copy:
+    src: error-pages/
+    dest: /var/www/_error-pages/
+
+- name: copy error-pages.conf
+  copy:
+    src: error-pages.conf
+    dest: /etc/nginx/snippets/
