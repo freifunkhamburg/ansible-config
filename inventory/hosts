@@ -1,11 +1,13 @@
 [ffhh]
 #speicher ansible_host=speicher.hamburg.freifunk.net
 srv01 ansible_host=srv01.hamburg.freifunk.net
+srv02 ansible_host=srv02.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 
 [certbot]
 #speicher
 srv01
+srv02
 
 [certsync]
 srv03
@@ -13,6 +15,7 @@ srv03
 [nginx]
 #speicher
 srv01
+srv02
 srv03
 
 [updates]
@@ -21,4 +24,5 @@ srv03
 
 [vms]
 srv01
+srv02
 srv03
