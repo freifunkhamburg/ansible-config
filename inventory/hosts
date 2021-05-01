@@ -1,4 +1,5 @@
 [ffhh]
+cloud ansible_host=cloud.hamburg.freifunk.net
 #speicher ansible_host=speicher.hamburg.freifunk.net
 srv01 ansible_host=srv01.hamburg.freifunk.net
 srv02 ansible_host=srv02.hamburg.freifunk.net
@@ -13,6 +14,7 @@ srv02
 srv03
 
 [nginx]
+cloud
 #speicher
 srv01
 srv02
