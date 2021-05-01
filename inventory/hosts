@@ -1,20 +1,17 @@
 [ffhh]
-jitsi ansible_host=jitsi.hamburg.freifunk.net
-speicher ansible_host=speicher.hamburg.freifunk.net
+#speicher ansible_host=speicher.hamburg.freifunk.net
 srv01 ansible_host=srv01.hamburg.freifunk.net
 srv03 ansible_host=srv03.hamburg.freifunk.net
 
 [certbot]
-jitsi
-speicher
+#speicher
 srv01
 
 [certsync]
 srv03
 
 [nginx]
-jitsi
-speicher
+#speicher
 srv01
 srv03
 
