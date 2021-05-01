@@ -6,6 +6,8 @@ basics_ssh_match_blocks:
       - AuthorizedKeysFile /home/certsync/authorized_keys
       - ChrootDirectory /home/certsync/root
       - ForceCommand internal-sftp
-nginx_resolver: 192.76.134.90 212.12.50.158
+
+nginx_resolver: "192.76.134.90 212.12.50.158"
+
 updates_tls_crt: /etc/letsencrypt/live/updates.hamburg.freifunk.net/fullchain.pem
 updates_tls_key: /etc/letsencrypt/live/updates.hamburg.freifunk.net/privkey.pem

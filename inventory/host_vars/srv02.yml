@@ -2,10 +2,14 @@ basics_autoupdate_origins:
   - o=Node Source,n=${distro_codename}
   - o=Prosody,n=${distro_codename}
   - o=TorProject,n=${distro_codename}
+
 hopglass_frontend_tls_crt: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/fullchain.pem
 hopglass_frontend_tls_key: /etc/letsencrypt/live/hopglass.hamburg.freifunk.net/privkey.pem
+
 media_tls_crt: /etc/letsencrypt/live/media.hamburg.freifunk.net/fullchain.pem
 media_tls_key: /etc/letsencrypt/live/media.hamburg.freifunk.net/privkey.pem
+
 meta_tls_crt: /etc/letsencrypt/live/hamburg.freifunk.net/fullchain.pem
 meta_tls_key: /etc/letsencrypt/live/hamburg.freifunk.net/privkey.pem
-nginx_resolver: 127.0.0.1
+
+nginx_resolver: "127.0.0.1"
