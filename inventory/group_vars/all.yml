@@ -1,6 +1,5 @@
 ansible_python_interpreter: /usr/bin/python3
 
 basics_autoupdate_mail: backend@hamburg.freifunk.net
-basics_autoupdate_reboot_time: "04:00"
 
 nginx_error_log: "/dev/null error"
