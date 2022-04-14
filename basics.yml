@@ -2,13 +2,13 @@
 - hosts: ffhh
   roles:
     - basics
-    - ffhh-basics
+    - basics-ffhh
   tags: basics
 
 - hosts: nginx
   roles:
     - nginx
-    - nginx-extra
+    - nginx-ffhh
     - error-pages
   tags: nginx
 
