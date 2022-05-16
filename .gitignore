@@ -1,5 +1,8 @@
+# Directories
 ENV/
 tmp/
 
+# Files
 *.retry
 *.swp
+ansible.cfg
