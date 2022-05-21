@@ -1,20 +1,20 @@
 ---
 - hosts: ffhh
   roles:
-    - basics
+    - alxndr42.commons.basics
     - basics-ffhh
   tags: basics
 
 - hosts: nginx
   roles:
-    - nginx
+    - alxndr42.commons.nginx
     - nginx-ffhh
     - error-pages
   tags: nginx
 
 - hosts: certbot
   roles:
-    - certbot
+    - alxndr42.commons.certbot
   tags: certbot
 
 - hosts: certsync

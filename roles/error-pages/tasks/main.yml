@@ -1,13 +1,13 @@
 ---
 - name: create directory
   file:
-    path: /var/www/_error-pages
+    path: /var/www/error-pages
     state: directory
 
 - name: copy error-pages
   copy:
     src: error-pages/
-    dest: /var/www/_error-pages/
+    dest: /var/www/error-pages/
 
 - name: copy error-pages.conf
   copy:

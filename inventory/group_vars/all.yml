@@ -1,5 +1,5 @@
-ansible_python_interpreter: /usr/bin/python3
-
 basics_autoupdate_mail: backend@hamburg.freifunk.net
+
+certbot_email: backend@hamburg.freifunk.net
 
 nginx_error_log: "/dev/null error"
