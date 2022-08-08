@@ -36,7 +36,7 @@ server {
 
 {% if updates_letsencrypt == 'local' %}
     location ^~ /.well-known/acme-challenge {
-        root /var/www/_acme-challenge;
+        root /var/www/acme-challenge;
         access_log off;
     }
 {% elif updates_letsencrypt == 'srv01' %}
