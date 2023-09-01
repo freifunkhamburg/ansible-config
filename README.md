@@ -18,25 +18,18 @@ ansible-galaxy install -r requirements-galaxy.yml
 ansible-galaxy install -r requirements-github.yml
 ```
 
-## Anwenden der Konfiguration auf alle Server
+## Anwenden der Konfiguration
 
 ```bash
+# Anwenden der Konfiguration
 ./site
-```
 
-Das Skript führt das Playbook `site.yml` aus. Zum Testen kann `-C` angehängt
-werden.
+# Testen der Konfiguration
+./site -C
 
-## Ansible Convenience
+# Anwenden nur auf bestimmte Server
+./site -l srv01,srv02
 
-Einschränken auf bestimmte Tags, z.B. `nginx`:
-
-```bash
-./site -t nginx
-```
-
-Einschränken auf bestimmte Server:
-
-```bash
-./site -l srv01
+# Anwenden nur auf bestimmte Tags
+./site -t basics,nginx
 ```
