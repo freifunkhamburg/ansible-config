@@ -1,6 +1,5 @@
 basics_autoupdate_origins:
   - o=Node Source,n=${distro_codename}
-  - o=TorProject,n=${distro_codename}
 
 media_tls_crt: /etc/letsencrypt/live/media.hamburg.freifunk.net/fullchain.pem
 media_tls_key: /etc/letsencrypt/live/media.hamburg.freifunk.net/privkey.pem
