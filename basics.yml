@@ -12,6 +12,11 @@
     - error-pages
   tags: nginx
 
+- hosts: nodejs
+  roles:
+    - alxndr42.commons.nodejs
+  tags: nodejs
+
 - hosts: certbot
   roles:
     - alxndr42.commons.certbot
