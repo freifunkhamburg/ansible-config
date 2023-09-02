@@ -1,5 +1,5 @@
 basics_autoupdate_origins:
-  - "o=Node Source,n=${distro_codename}"
+  - site=deb.nodesource.com,n=nodistro
 basics_ssh_match_blocks:
   - match: User certsync
     options:
@@ -8,6 +8,8 @@ basics_ssh_match_blocks:
       - ForceCommand internal-sftp
 
 nginx_resolver: "192.76.134.90 212.12.50.158"
+
+nodejs_version: node_18.x
 
 updates_tls_crt: /etc/letsencrypt/live/updates.hamburg.freifunk.net/fullchain.pem
 updates_tls_key: /etc/letsencrypt/live/updates.hamburg.freifunk.net/privkey.pem

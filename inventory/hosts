@@ -19,6 +19,7 @@ srv02
 srv03
 
 [nodejs]
+srv01
 srv02
 
 [updates]
