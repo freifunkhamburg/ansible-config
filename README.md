@@ -11,9 +11,6 @@ erforderlich.
 Abhängigkeiten installieren:
 
 ```bash
-# Abhängigkeiten installieren mit Ansible Galaxy
-ansible-galaxy install -r requirements-galaxy.yml
-
 # Abhängigkeiten installieren mit GitHub
 ansible-galaxy install -r requirements-github.yml
 ```
