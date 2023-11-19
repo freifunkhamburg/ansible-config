@@ -6,11 +6,14 @@
 verwaltet werden sollen. Zu den Servern ist SSH-Zugang mit sudo-Rechten
 erforderlich.
 
-[ansible]: https://docs.ansible.com/ansible/latest/
+[ansible]: https://docs.ansible.com/ansible/
 
 Abhängigkeiten installieren:
 
 ```bash
+# Abhängigkeiten installieren mit Codeberg
+ansible-galaxy install -r requirements-codeberg.yml
+
 # Abhängigkeiten installieren mit GitHub
 ansible-galaxy install -r requirements-github.yml
 ```
@@ -18,11 +21,11 @@ ansible-galaxy install -r requirements-github.yml
 ## Anwenden der Konfiguration
 
 ```bash
-# Anwenden der Konfiguration
-./site
-
 # Testen der Konfiguration
 ./site -C
+
+# Anwenden der Konfiguration
+./site
 
 # Anwenden nur auf bestimmte Server
 ./site -l srv01,srv02
