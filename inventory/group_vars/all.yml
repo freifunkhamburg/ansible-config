@@ -1,3 +1,5 @@
+ansible_python_interpreter: auto_silent
+
 basics_autoupdate_mail: backend@hamburg.freifunk.net
 
 certbot_email: backend@hamburg.freifunk.net
