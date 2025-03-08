@@ -1,3 +1,5 @@
 basics_autoupdate_origins:
   - o=TorProject,n=${distro_codename}
 basics_autoupdate_reboot: "false"
+
+nginx_resolver: "10.112.96.253"
