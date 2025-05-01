@@ -2,4 +2,4 @@
 collections:
   - name: https://codeberg.org/alxndr42/ansible-commons.git
     type: git
-    version: v1.12.0
+    version: v1.13.1
