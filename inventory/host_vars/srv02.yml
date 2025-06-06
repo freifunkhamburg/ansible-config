@@ -8,5 +8,3 @@ meta_tls_crt: /etc/letsencrypt/live/hamburg.freifunk.net/fullchain.pem
 meta_tls_key: /etc/letsencrypt/live/hamburg.freifunk.net/privkey.pem
 
 nginx_resolver: "194.150.168.168"
-
-nodejs_version: node_18.x
