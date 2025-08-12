@@ -11,11 +11,7 @@ erforderlich.
 Abhängigkeiten installieren:
 
 ```bash
-# Abhängigkeiten installieren mit Codeberg
-ansible-galaxy install -r requirements-codeberg.yml
-
-# Abhängigkeiten installieren mit GitHub
-ansible-galaxy install -r requirements-github.yml
+ansible-galaxy install -r requirements.yml
 ```
 
 ## Anwenden der Konfiguration
