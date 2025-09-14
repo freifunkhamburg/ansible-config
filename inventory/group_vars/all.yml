@@ -1,6 +1,11 @@
 ansible_python_interpreter: auto_silent
 
 basics_autoupdate_mail: backend@hamburg.freifunk.net
+basics_ssh_kex_algorithms:
+  - sntrup761x25519-sha512
+  - sntrup761x25519-sha512@openssh.com
+  - curve25519-sha256
+  - curve25519-sha256@libssh.org
 
 certbot_email: backend@hamburg.freifunk.net
 
