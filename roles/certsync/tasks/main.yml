@@ -1,6 +1,6 @@
 ---
 - name: create SSH key
-  command: ssh-keygen -b 4096 -C {{ ansible_nodename }} -f {{ certsync_key }}
+  command: ssh-keygen -b 4096 -C {{ ansible_facts["nodename"] }} -f {{ certsync_key }}
   args:
     creates: "{{ certsync_key }}"
   tags: certsync
