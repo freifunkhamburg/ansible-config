@@ -2,6 +2,7 @@ ansible_python_interpreter: auto_silent
 
 basics_autoupdate_mail: backend@hamburg.freifunk.net
 basics_ssh_kex_algorithms:
+  - mlkem768x25519-sha256
   - sntrup761x25519-sha512
   - sntrup761x25519-sha512@openssh.com
   - curve25519-sha256
@@ -9,4 +10,5 @@ basics_ssh_kex_algorithms:
 
 certbot_email: backend@hamburg.freifunk.net
 
+nginx_curves: "X25519MLKEM768:X25519:prime256v1"
 nginx_error_log: "/dev/null error"
