@@ -1,6 +1,11 @@
 ansible_python_interpreter: auto_silent
 
 basics_autoupdate_mail: backend@hamburg.freifunk.net
+basics_ssh_hostkeys:
+  - ssh_host_ed25519_key
+  - ssh_host_rsa_key
+  - ssh_host_ed25519_key_20260517
+  - ssh_host_rsa_key_20260517
 basics_ssh_kex_algorithms:
   - mlkem768x25519-sha256
   - sntrup761x25519-sha512
