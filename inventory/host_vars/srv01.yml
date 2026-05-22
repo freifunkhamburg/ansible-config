@@ -1,5 +1,7 @@
 basics_autoupdate_origins:
   - site=deb.nodesource.com,n=nodistro
+# srv01 services with custom user namespaces: irqbalance, prometheus
+basics_sysctl_tweaks: []
 
 basics_ssh_match_blocks:
   - match: User certsync
