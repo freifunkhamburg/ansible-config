@@ -5,11 +5,11 @@ CERT_DIR="{{ certsync_dir }}"
 
 if [ ! -d $CERT_DIR ]; then
   mkdir -p $CERT_DIR
-  chown root.root $CERT_DIR
+  chown root:root $CERT_DIR
   chmod 750 $CERT_DIR
 fi
 
-sftp -p -q -i {{ certsync_key }} certsync@{{ certsync_host }}:* "$CERT_DIR/" > /dev/null 2>&1
+sftp -p -i {{ certsync_key }} certsync@{{ certsync_host }}:* "$CERT_DIR/" > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   echo "Error getting certificates"
   exit 1
